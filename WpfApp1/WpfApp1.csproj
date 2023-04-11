@@ -117,5 +117,14 @@
   <ItemGroup>
     <Resource Include="srcs\serverLink.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Styles\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\skullWhite.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

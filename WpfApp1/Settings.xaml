@@ -40,12 +40,29 @@
 
 
             <!-- CLOSING BUTTON -->
-            <Button Click="MaincloseWindowPersonalized" Content="x"
-                Background="DarkRed" Foreground="White" 
-                FontSize="20" Margin="552,10,0,352" 
-                HorizontalAlignment="Left" Width="38"
-                VerticalContentAlignment="Top"
-                    Style="{StaticResource GeneralPurposeButton}"/>
+            <Button x:Name="CloseButtonSettings" Click="MaincloseWindowPersonalized"
+                    Style="{StaticResource CloseButton}"
+                    Margin="548,10,10,348" Width="40" Height="40" Cursor="Hand" ToolTip="Close">
+                <Image Source="/Styles/close.png" Width="20" Height="20"
+                       VerticalAlignment="Center"/>
+            </Button>
+
+            <!-- KILL BUTTON -->
+            <Button Click="MaincloseWindowPersonalized"
+                    Margin="502,10,56,348" Width="40" Height="40" ToolTip="Kill process" Cursor="Hand"                    >
+                <Image Source="/assets/skullWhite.png" Width="25" Height="25"/>
+
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource CloseButton}">
+                        <Setter Property="Background" Value="Black"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#dddd00"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
 
 
         </Grid>

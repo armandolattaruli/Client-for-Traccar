@@ -56,11 +56,30 @@
                 </TextBlock.Effect>
             </TextBlock>
 
-            <Button Click="closeWindowPersonalized" Content="x"
-                    Background="DarkRed" Foreground="White" 
-                    FontSize="20" Grid.Column="2" Margin="152,10,0,27" 
-                    HorizontalAlignment="Left" Width="38"
-                    VerticalContentAlignment="Top"/>
+            <!-- CLOSING BUTTON -->
+            <Button x:Name="CloseButtonSettings" Click="MaincloseWindowPersonalized"
+                    Style="{StaticResource CloseButton}"
+                    Margin="150,10,10,25" Width="40" Height="40" Cursor="Hand" ToolTip="Close" Grid.Column="2">
+                <Image Source="/Styles/close.png" Width="20" Height="20"
+                       VerticalAlignment="Center"/>
+            </Button>
+
+            <!-- KILL BUTTON -->
+            <Button Click="closeWindowPersonalized"
+                    Margin="105,10,55,25" Width="40" Height="40" ToolTip="Kill process" Cursor="Hand" Grid.Column="2"                    >
+                <Image Source="/assets/skullWhite.png" Width="25" Height="25"/>
+
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource CloseButton}">
+                        <Setter Property="Background" Value="Black"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#dddd00"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
 
             <Button BorderBrush="{x:Null}" Margin="10,363,165,-313" Click="Button_Click" Height="25" Width="25">
                 <Button.Background>
