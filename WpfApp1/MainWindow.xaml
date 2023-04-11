@@ -21,7 +21,7 @@
                 <RowDefinition Height="75"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <TextBlock Margin="164,0,0,-314" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FF717171" FontFamily="Cascadia Code" FontSize="15" TextAlignment="Center" Grid.ColumnSpan="3" Height="36" Width="264">
+            <TextBlock Margin="164,0,0,-314" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FF717171" FontFamily="Cascadia Code" TextAlignment="Center" Grid.ColumnSpan="3" Height="36" Width="264" FontSize="10">
                 <TextBlock.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -38,13 +38,13 @@
 
             <Label Content="LATITUDE:" Margin="123,253,0,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code"/>
 
-            <TextBlock Text="N/D" x:Name="textForLatitude" Foreground="#FFF56C2C" FontSize="20" Grid.ColumnSpan="2" Margin="38,284,133,-237" TextAlignment="Center">
+            <TextBlock Text="N/D" x:Name="textForLatitude" Foreground="#FFF56C2C" FontSize="17" Grid.ColumnSpan="2" Margin="38,284,133,-237" TextAlignment="Center">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect>
             </TextBlock>
 
-            <TextBlock Text="N/D" x:Name="textForLongitude" Foreground="#FFF56C2C" FontSize="20" Grid.ColumnSpan="2" Margin="124,284,47,-237" TextAlignment="Center" Grid.Column="1">
+            <TextBlock Text="N/D" x:Name="textForLongitude" Foreground="#FFF56C2C" FontSize="17" Grid.ColumnSpan="2" Margin="124,284,47,-237" TextAlignment="Center" Grid.Column="1">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect>
@@ -52,7 +52,7 @@
 
             <Label Content="LONGITUDE:" Margin="0,253,123,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" Grid.Column="2"/>
             <Label Content="LATEST UPDATE:" Margin="46,253,46,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" Grid.Column="1"/>
-            <TextBlock Text="N/D" x:Name="dateUpdate" Foreground="#FFF56C2C" FontSize="20" Margin="41,284,41,-269" TextAlignment="Center" Grid.Column="1" TextWrapping="Wrap">
+            <TextBlock Text="N/D" x:Name="dateUpdate" Foreground="#FFF56C2C" FontSize="17" Margin="41,284,41,-269" TextAlignment="Center" Grid.Column="1" TextWrapping="Wrap">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect>
