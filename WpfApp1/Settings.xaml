@@ -7,7 +7,9 @@
         mc:Ignorable="d"
         Title="Traccar Client" Height="400" Width="600"
         AllowsTransparency="True"
-        WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" MouseDown="Window_MouseDown">
+        WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" MouseDown="Window_MouseDown" FontFamily="Cascadia Code"
+        
+        >
 
     <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919">
         <Grid>
@@ -24,8 +26,10 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <TextBox Margin="10,119,109,244" Style="{DynamicResource TextBoxStyle}"
-                Name="serverAddressName"                 
+
+            <TextBox Margin="10,119,109,244"
+                Name="serverAddressName" 
+                     Style="{StaticResource NormalTextBox}"
             />
 
             <Button Margin="496,119,10,244"
@@ -40,11 +44,11 @@
                 Background="DarkRed" Foreground="White" 
                 FontSize="20" Margin="552,10,0,352" 
                 HorizontalAlignment="Left" Width="38"
-                VerticalContentAlignment="Top"/>
+                VerticalContentAlignment="Top"
+                    Style="{StaticResource GeneralPurposeButton}"/>
 
 
         </Grid>
-
 
     </Border>
 

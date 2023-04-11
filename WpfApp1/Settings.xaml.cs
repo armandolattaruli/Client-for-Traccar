@@ -23,6 +23,24 @@ namespace WpfApp1
         public Settings()
         {
             InitializeComponent();
+            //loadLinkServer();
+        }
+
+        private void loadLinkServer()
+        {
+            string path = @"..\..\srcs\serverLink.txt";
+            string originalLink = "";
+            originalLink = File.ReadAllText(path);
+
+            if (originalLink != "")
+            {
+                serverAddressName.Text = originalLink;
+            }
+            else
+            {
+                serverAddressName.Text = "Server link not saved.";
+            }
+
         }
 
         private void saveServerAddress_Click(object sender, RoutedEventArgs e)
