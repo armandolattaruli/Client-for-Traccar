@@ -56,5 +56,11 @@ namespace WpfApp1
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Settings win2 = new Settings();
+            win2.Show();
+        }
     }
 }

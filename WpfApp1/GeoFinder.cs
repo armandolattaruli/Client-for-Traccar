@@ -3,6 +3,7 @@ using System.Net;
 using System.Device.Location;
 using System.Management;
 using WpfApp1;
+using System.IO;
 
 
 class GeoFinder
@@ -64,6 +65,15 @@ class GeoFinder
         } */
     }
 
+    private string readLink()
+    {
+        string linkToServer = "";
+        string path = @"..\..\srcs\serverLink.txt";
+        linkToServer = File.ReadAllText(path);
+
+        return linkToServer;
+    }
+
     public string magicClient()
     {
         WebClient client = new WebClient();
@@ -80,7 +90,7 @@ class GeoFinder
         // "?id=" + userName + "&timestamp=1627595940&lat=" + latitude + "&lon=" + longitude + "&speed=" + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=" + + "&batt=" + batt + "
         string datiVari = "/?id=" + "deadboo00000k_02" + "&timestamp=" + time + "&lat=" + latitude + "&lon=" + longitude + "&speed=" + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=2000.0";
         //funziona alle 21.18 "?id=henlociao&timestamp=1627595440&lat=230.0519427&lon=17.088826&speed=0.0&bearing=90.0&altitude=68.0927084024509&accuracy=2000.0&batt=93.0"
-        string URI = "http://demo3.traccar.org:5055" + datiVari;
+        string URI = readLink() + datiVari;
 
 
         client.UploadString(URI, datiVari);

@@ -9,7 +9,7 @@
         AllowsTransparency="True"
         WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" MouseDown="Window_MouseDown">
 
-    <Border CornerRadius="20" Background="#ff292929">
+    <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"></ColumnDefinition>
@@ -31,10 +31,8 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform><Run Language="it-it" Text="v. 0.0.0"/><LineBreak/><Run Language="it-it" Text="Developed by Armando Lattaruli"/><LineBreak/><Run Language="it-it"/></TextBlock>
 
-            <Button Margin="10,48,10,-48" Cursor="Hand"
-                    Click="rivelaPosizione">
-                Aggiorna posizione
-            </Button>
+            <Button Margin="152,210,162,-164" Cursor="Hand"
+                    Click="rivelaPosizione" Grid.ColumnSpan="3" Content="Update position"/>
 
             <Label Content="LATITUDE:" Margin="123,253,0,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code"/>
 
@@ -63,6 +61,13 @@
                     FontSize="20" Grid.Column="2" Margin="152,10,0,27" 
                     HorizontalAlignment="Left" Width="38"
                     VerticalContentAlignment="Top"/>
+
+            <Button BorderBrush="{x:Null}" Margin="10,363,165,-313" Click="Button_Click" Height="25" Width="25">
+                <Button.Background>
+                    <ImageBrush ImageSource="assets/settings.png"/>
+                </Button.Background>
+            </Button>
+
 
         </Grid>
 
