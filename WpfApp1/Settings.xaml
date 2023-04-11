@@ -16,7 +16,7 @@
 
             <Label Content="Settings" Foreground="#dddddd" FontSize="20" Grid.ColumnSpan="2" Margin="10,10,190,-10" FontWeight="Bold" FontFamily="Cascadia Code"></Label>
 
-            <Label Content="Server address" Foreground="#dddddd" FontSize="15" Margin="10,90,190,282" FontFamily="Cascadia Code" RenderTransformOrigin="0.5,0.5">
+            <Label Content="Server address" Foreground="#dddddd" FontSize="17" Margin="10,90,190,282" FontFamily="Cascadia Code" RenderTransformOrigin="0.5,0.5">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

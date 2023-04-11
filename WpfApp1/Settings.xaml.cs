@@ -23,7 +23,7 @@ namespace WpfApp1
         public Settings()
         {
             InitializeComponent();
-            //loadLinkServer();
+            loadLinkServer();
         }
 
         private void loadLinkServer()
