@@ -23,7 +23,6 @@ class GeoFinder
 
 
         GeoCoordinate coord = watcher.Position.Location;
-        int i = 0;
 
         userName = "henlociao";
         var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
@@ -63,10 +62,9 @@ class GeoFinder
             Console.WriteLine("\nUnknown latitude and longitude. :C");
 
         } */
-        Console.WriteLine("trova ended now!");
     }
 
-    void magicClient()
+    public string magicClient()
     {
         WebClient client = new WebClient();
 
@@ -80,12 +78,14 @@ class GeoFinder
         }
 
         // "?id=" + userName + "&timestamp=1627595940&lat=" + latitude + "&lon=" + longitude + "&speed=" + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=" + + "&batt=" + batt + "
-        string datiVari = "?id=" + "deadbook_02" + "&timestamp=" + time + "&lat=" + latitude + "&lon=" + longitude + "&speed=" + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=2000.0&batt=" + batt;
+        string datiVari = "/?id=" + "deadboo00000k_02" + "&timestamp=" + time + "&lat=" + latitude + "&lon=" + longitude + "&speed=" + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=2000.0";
         //funziona alle 21.18 "?id=henlociao&timestamp=1627595440&lat=230.0519427&lon=17.088826&speed=0.0&bearing=90.0&altitude=68.0927084024509&accuracy=2000.0&batt=93.0"
         string URI = "http://demo3.traccar.org:5055" + datiVari;
 
-        //client.UploadString(URI, datiVari);
-        //Console.WriteLine("\nURI Parziale" + datiVari + "\n\nAggiornato.");
+
+        client.UploadString(URI, datiVari);
+        Console.WriteLine("\nURI Parziale" + datiVari + "\n\nAggiornato.");
+        return URI;
     }
 
     public string getLatitude()
