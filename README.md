@@ -1,3 +1,3 @@
 # Client-for-Traccar
 
-A simple client for Traccar GPS Tracking System
+A simple Windows client for Traccar GPS Tracking System
