@@ -45,6 +45,17 @@ namespace WpfApp1
 
         private void saveServerAddress_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Do you want to update the address of you Traccar server?", "Update File", MessageBoxButton.OKCancel);
+
+            if (result == MessageBoxResult.OK)
+            {
+                writeServerToFile();
+            }
+
+        }
+
+        private void writeServerToFile()
+        {
             string path = @"..\..\srcs\serverLink.txt";
             File.WriteAllText(path, serverAddressName.Text);
         }

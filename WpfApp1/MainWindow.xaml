@@ -57,7 +57,7 @@
             </TextBlock>
 
             <!-- CLOSING BUTTON -->
-            <Button x:Name="CloseButtonSettings" Click="MaincloseWindowPersonalized"
+            <Button x:Name="CloseButtonSettings" Click="closeWindowPersonalized"
                     Style="{StaticResource CloseButton}"
                     Margin="150,10,10,25" Width="40" Height="40" Cursor="Hand" ToolTip="Close" Grid.Column="2">
                 <Image Source="/Styles/close.png" Width="20" Height="20"
@@ -81,10 +81,24 @@
                 </Button.Style>
             </Button>
 
-            <Button BorderBrush="{x:Null}" Margin="10,363,165,-313" Click="Button_Click" Height="25" Width="25">
-                <Button.Background>
-                    <ImageBrush ImageSource="assets/settings.png"/>
-                </Button.Background>
+            <Button Margin="10,363,165,-313" Click="Button_Click" Height="25" Width="25" >
+                <Image Source="assets/settings.png"/>
+
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource PictureButton}">
+                        <Setter Property="Background" Value="Transparent"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="8" Color="#222222" Opacity="1"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
 
 

@@ -1,1 +1,1 @@
-https://demo3.traccar.org/
+http://demo3.traccar.org

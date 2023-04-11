@@ -39,9 +39,6 @@ namespace WpfApp1
             textForLongitude.Text = myGeoFinder.getLongitude();
             dateUpdate.Text = DateTime.Now.ToString();
 
-            MessageBox.Show(myGeoFinder.magicClient());
-
-
             return;
         }
 

@@ -59,6 +59,29 @@
         </Style.Triggers>
     </Style>
 
+    <Style TargetType="{x:Type Button}" x:Key="PictureButton">
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{DynamicResource DarkGray}" BorderThickness="0" CornerRadius="5">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="IsMouseCaptured" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+
     <Style TargetType="{x:Type TextBox}" x:Key="NormalTextBox">
         <Setter Property="Background" Value="{DynamicResource PrimaryWhite}"/>
         <Setter Property="Padding" Value="5"/>
