@@ -59,7 +59,7 @@
             </Button>
 
             <!-- KILL BUTTON -->
-            <Button Click="MaincloseWindowPersonalized"
+            <Button Click="killSender"
                     Margin="480,10,72,348" Width="40" Height="40" ToolTip="Kill process" Cursor="Hand">
                 <Image Source="/assets/skullWhite.png" Width="25" Height="25"/>
 

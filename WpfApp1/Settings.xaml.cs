@@ -70,5 +70,10 @@ namespace WpfApp1
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
+
+        private void killSender(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

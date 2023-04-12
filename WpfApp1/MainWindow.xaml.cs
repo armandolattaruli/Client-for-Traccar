@@ -22,35 +22,28 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+
         public MainWindow()
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            createThread();
+            createTask();
         }
 
-        private void createThread()
+        private void createTask()
         {
-            // Creare un token di cancellazione
-            CancellationTokenSource cts = new CancellationTokenSource();
-
-            // Creare un'istanza del task in background che esegue il lavoro
-            Task task = Task.Run(() =>
+            Task.Run(async () =>
             {
-                while (!cts.IsCancellationRequested)
+                while (!_cancellationTokenSource.Token.IsCancellationRequested)
                 {
-                    MessageBox.Show("Il task in background sta eseguendo il lavoro...");
-                    Thread.Sleep(1000); // Eseguire il lavoro per 1 secondo
+                    // Il codice che vuoi eseguire
+                    pippo();
+
+                    // Attendi per 5 secondi prima di eseguire nuovamente il codice
+                    await Task.Delay(TimeSpan.FromSeconds(3));
                 }
-            }, cts.Token);
-
-            // Aggiungere un gestore dell'evento per la chiusura dell'applicazione principale
-            Application.Current.Exit += (sender, e) =>
-            {
-                // Annullare il token di cancellazione per terminare il task in background
-                cts.Cancel();
-            };
-
+            }, _cancellationTokenSource.Token);
         }
 
 
@@ -71,7 +64,7 @@ namespace WpfApp1
             return;
         }
 
-        private async void pippo()
+        private void pippo()
         {
             MessageBox.Show("ciao");
         }
@@ -93,6 +86,11 @@ namespace WpfApp1
             Settings win2 = new Settings();
             win2.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             win2.Show();
+        }
+
+        private void killSender(object sender, RoutedEventArgs e)
+        {
+            _cancellationTokenSource.Cancel();
         }
     }
 }
