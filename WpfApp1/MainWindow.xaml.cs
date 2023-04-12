@@ -14,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
+using System.Windows.Forms;
+
 
 namespace WpfApp1
 {
@@ -23,12 +26,19 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
         private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-
+        private NotifyIcon _notifyIcon;
         public MainWindow()
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             SharedData.createTask();
+
+            _notifyIcon = new NotifyIcon();
+            _notifyIcon.Icon = new System.Drawing.Icon("../../assets/icon.ico"); // Path all'icona di notifica
+            _notifyIcon.Visible = true;
+            _notifyIcon.DoubleClick += (s, args) => Show();
+            _notifyIcon.ShowBalloonTip(2, "Traccar Client for Windows", "Traccar Client is currently running", ToolTipIcon.Info);
+            _notifyIcon.mouser
         }
 
         public void rivelaPosizione(object sender, RoutedEventArgs e)
@@ -48,7 +58,8 @@ namespace WpfApp1
 
         private void closeWindowPersonalized(object sender, RoutedEventArgs e)
         {
-            Close();
+            //Close();
+            Hide();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
