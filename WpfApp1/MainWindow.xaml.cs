@@ -57,6 +57,7 @@ namespace WpfApp1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Settings win2 = new Settings();
+            win2.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             win2.Show();
         }
     }

@@ -11,7 +11,7 @@
     <SolidColorBrush x:Key="SecondaryWhite" Color="#aaaaaa"></SolidColorBrush>
     <SolidColorBrush x:Key="DarkGray" Color="#333333"></SolidColorBrush>
 
-
+    <!-- general purpose button-->
     <Style TargetType="{x:Type Button}" x:Key="GeneralPurposeButton">
         <Setter Property="Background" Value="{DynamicResource PrimaryBlue}"/>
         <Setter Property="FontSize" Value="20"/>
@@ -34,6 +34,7 @@
         </Style.Triggers>
     </Style>
 
+    <!-- close button-->
     <Style TargetType="{x:Type Button}" x:Key="CloseButton">
         <Setter Property="Background" Value="DarkRed"/>
         <Setter Property="Foreground" Value="White"/>
@@ -59,6 +60,7 @@
         </Style.Triggers>
     </Style>
 
+    <!--picture button -->
     <Style TargetType="{x:Type Button}" x:Key="PictureButton">
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
@@ -84,7 +86,6 @@
 
     <Style TargetType="{x:Type TextBox}" x:Key="NormalTextBox">
         <Setter Property="Background" Value="{DynamicResource PrimaryWhite}"/>
-        <Setter Property="Padding" Value="5"/>
         <Setter Property="Text" Value=""/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
