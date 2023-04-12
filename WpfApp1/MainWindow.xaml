@@ -18,30 +18,31 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Margin="174,0,0,-300" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FF717171" FontFamily="Cascadia Code" TextAlignment="Center" Grid.ColumnSpan="3" Height="36" Width="264" FontSize="10">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.021"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-				<Run Language="it-it" Text="v. 0.0.0"/>
-				<LineBreak/>
-				<Run Language="it-it" Text="Developed by Armando Lattaruli"/>
-				<LineBreak/>
-				<Run Language="it-it"/>
+
+            <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Grid.ColumnSpan="3" Margin="0,-1,0,14" CornerRadius="5"/>
+
+            <TextBlock x:Name="infoVersion" Margin="162,376,0,-313" HorizontalAlignment="Left"
+                       Foreground="#FF717171"
+                       FontFamily="Cascadia Code" TextAlignment="Center" Width="264" 
+                       FontSize="10" Grid.ColumnSpan="3">
+                v. 0.0.0
             </TextBlock>
 
-            <Image Source="/assets/icon.png" Margin="8,15,158,30" />
-            <TextBlock Text="Traccar client for Windows"
-                       FontSize="21"
-                       Foreground="#dddddd" Margin="45,15,62,28" Grid.ColumnSpan="2"></TextBlock>
+            <Image x:Name="appIcon" Source="/assets/icon.png" Margin="8,15,158,30" />
+
+            <TextBlock x:Name="windowTitle"
+                    Text="Traccar client for Windows"
+                    FontSize="21"
+                    Foreground="#dddddd" Margin="45,15,62,28"
+                    Grid.ColumnSpan="2">
+            </TextBlock>
 
 
-            <Button Margin="65,126,65,-124" Cursor="Hand"
-                    Click="rivelaPosizione" Grid.Column="1" ToolTip="Update position manually">
+            <Button x:Name="manualLocalize"
+                    Margin="65,126,65,-124" Cursor="Hand"
+                    Click="rivelaPosizione" 
+                    Grid.Column="1" 
+                    ToolTip="Update position manually">
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource CloseButton}">
                         <Setter Property="Background" Value="{DynamicResource SecondaryBlue}"/>
@@ -55,36 +56,75 @@
                 <Image Source="/assets/location-sign.png" Height="40" Width="40" />
             </Button>
 
-            <Label Content="LATITUDE:" Margin="123,253,0,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code"/>
-            <TextBlock Text="N/D" x:Name="textForLatitude" Foreground="#FFF56C2C" FontSize="17" Grid.ColumnSpan="2" Margin="38,284,133,-237" TextAlignment="Center">
+            <Label x:Name="labelLat" Content="LATITUDE:" Margin="123,253,0,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code"/>
+            <TextBlock x:Name="textForLatitude"
+                       Text="N/D" 
+                       Foreground="#FFF56C2C" 
+                       FontSize="17" 
+                       Grid.ColumnSpan="2" 
+                       Margin="38,284,133,-237" 
+                       TextAlignment="Center">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect>
             </TextBlock>
 
-            <TextBlock Text="N/D" x:Name="textForLongitude" Foreground="#FFF56C2C" FontSize="17" Grid.ColumnSpan="2" Margin="124,284,47,-237" TextAlignment="Center" Grid.Column="1">
+            <Label x:Name="labelLong" Content="LONGITUDE:" Margin="0,253,123,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" Grid.Column="2"/>
+            <TextBlock x:Name="textForLongitude" 
+                       Text="N/D"
+                       Foreground="#FFF56C2C"
+                       FontSize="17" 
+                       Grid.ColumnSpan="2" 
+                       Margin="124,284,47,-237" 
+                       TextAlignment="Center" 
+                       Grid.Column="1">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect>
             </TextBlock>
-            <Label Content="LONGITUDE:" Margin="0,253,123,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" Grid.Column="2"/>
-            <Label Content="LATEST UPDATE:" Margin="46,253,46,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" Grid.Column="1"/>
-            <TextBlock Text="N/D" x:Name="dateUpdate" Foreground="#FFF56C2C" FontSize="17" Margin="41,284,41,-269" TextAlignment="Center" Grid.Column="1" TextWrapping="Wrap">
+
+            <Label x:Name="labelUpdate" Content="LATEST UPDATE:" Margin="46,253,46,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" Grid.Column="1"/>
+            <TextBlock x:Name="dateUpdate" 
+                       Text="N/D" 
+                       Foreground="#FFF56C2C" 
+                       FontSize="17" 
+                       Margin="41,284,41,-269" 
+                       TextAlignment="Center" 
+                       Grid.Column="1" 
+                       TextWrapping="Wrap">
                 <TextBlock.Effect>
                     <DropShadowEffect/>
                 </TextBlock.Effect>
             </TextBlock>
+
             <!-- CLOSING BUTTON -->
-            <Button x:Name="CloseButtonSettings" Click="closeWindowPersonalized"
+            <Button x:Name="CloseButtonSettings"
+                    Click="closeWindowPersonalized"
                     Style="{StaticResource CloseButton}"
-                    Margin="150,10,10,25" Width="40" Height="40" Cursor="Hand" ToolTip="Close" Grid.Column="2">
-                <Image Source="/Styles/close.png" Width="20" Height="20"
+                    Margin="150,10,10,25" 
+                    Width="40" 
+                    Height="40" 
+                    Cursor="Hand" 
+                    ToolTip="Close" 
+                    Grid.Column="2">
+                <Image Source="/Styles/close.png"
+                       Width="20" 
+                       Height="20"
                        VerticalAlignment="Center"/>
             </Button>
+
             <!-- KILL BUTTON -->
-            <Button Click="killSender"
-                    Margin="105,10,55,25" Width="40" Height="40" ToolTip="Kill process" Cursor="Hand" Grid.Column="2"                    >
-                <Image Source="/assets/skullWhite.png" Width="25" Height="25"/>
+            <Button x:Name="killButton"
+                    Click="killSender"
+                    Margin="105,10,55,25" 
+                    Width="40" 
+                    Height="40" 
+                    ToolTip="Kill process" 
+                    Cursor="Hand" 
+                    Grid.Column="2" >
+                <Image Source="/assets/skullWhite.png" 
+                       Width="25" 
+                       Height="25"/>
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource CloseButton}">
                         <Setter Property="Background" Value="Black"/>
@@ -96,7 +136,13 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button Margin="10,363,165,-313" Click="Button_Click" Height="25" Width="25" >
+
+            <!-- SETTINGS BUTTON -->
+            <Button x:Name="settingsButton" 
+                    Margin="10,363,165,-313" 
+                    Click="Button_Click" 
+                    Height="25" 
+                    Width="25" >
                 <Image Source="assets/settings.png"/>
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource PictureButton}">

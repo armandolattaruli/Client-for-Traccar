@@ -2,7 +2,6 @@
 using System.Net;
 using System.Device.Location;
 using System.Management;
-using WpfApp1;
 using System.IO;
 
 namespace WpfApp1
@@ -30,7 +29,6 @@ namespace WpfApp1
             userName = "henlociao";
             var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
             time = Timestamp.ToString();
-            Console.WriteLine("TIMESTAMP: " + time);
 
             latitude = coord.Latitude.ToString();
             latitude = latitude.Replace(',', '.');
