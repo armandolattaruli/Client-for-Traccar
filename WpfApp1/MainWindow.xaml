@@ -40,7 +40,7 @@
 
             <Button x:Name="manualLocalize"
                     Margin="65,126,65,-124" Cursor="Hand"
-                    Click="rivelaPosizione" 
+                    Click="revealPosition" 
                     Grid.Column="1" 
                     ToolTip="Update position manually">
                 <Button.Style>
