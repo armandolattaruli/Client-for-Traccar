@@ -42,7 +42,7 @@ namespace WpfApp1
 
         public void rivelaPosizione(object sender, RoutedEventArgs e)
         {
-            GeoFinder.trova();
+            GeoFinder.findPosition();
 
             textForLatitude.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF2CB9F5");
             textForLongitude.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF2CB9F5");

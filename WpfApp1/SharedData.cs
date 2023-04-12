@@ -17,7 +17,7 @@ namespace WpfApp1
                 while (!_cancellationTokenSource.Token.IsCancellationRequested)
                 {
 
-                    WpfApp1.GeoFinder.trova();
+                    WpfApp1.GeoFinder.findPosition();
                     GeoFinder.magicClient();
 
 

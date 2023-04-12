@@ -12,7 +12,7 @@ namespace WpfApp1
         private static string userName, time, velocity, bearing, alti, precision, batt;
         private static string latitude, longitude;
 
-        public static void trova()
+        public static void findPosition()
         {
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
             // Do not suppress prompt, and wait 1000 milliseconds to start.
@@ -65,7 +65,7 @@ namespace WpfApp1
         {
             WebClient client = new WebClient();
 
-            /// trova percentuale batteria
+            /// findPosition percentuale batteria
             ManagementObjectSearcher mos = new ManagementObjectSearcher("select * from Win32_Battery");
 
             foreach (ManagementObject mo in mos.Get())
