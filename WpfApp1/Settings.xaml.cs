@@ -73,5 +73,15 @@ namespace WpfApp1
         {
             SharedData.cancelTask();
         }
+
+        private void saveConnectionTimeOut_click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Do you want to update the address of you Traccar server?", "Update File", MessageBoxButton.OKCancel);
+
+            if (result == MessageBoxResult.OK)
+            {
+                writeServerToFile();
+            }
+        }
     }
 }
