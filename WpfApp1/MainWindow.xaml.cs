@@ -38,7 +38,6 @@ namespace WpfApp1
             _notifyIcon.Visible = true;
             _notifyIcon.DoubleClick += (s, args) => Show();
             _notifyIcon.ShowBalloonTip(2, "Traccar Client for Windows", "Traccar Client is currently running", ToolTipIcon.Info);
-            _notifyIcon.mouser
         }
 
         public void rivelaPosizione(object sender, RoutedEventArgs e)
