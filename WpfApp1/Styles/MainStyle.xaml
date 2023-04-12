@@ -108,7 +108,7 @@
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 IsHitTestVisible="False"
                                 Opacity="0.5"
-                                Text="http://youripaddres.com:portNumber"
+                                Text="  http://youripaddres.com:portNumber"
                                 Visibility="Hidden" />
                         </Grid>
                     </Border>

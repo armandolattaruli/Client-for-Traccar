@@ -7,34 +7,45 @@
         mc:Ignorable="d"
         Title="Traccar Client" Height="400" Width="600"
         AllowsTransparency="True"
-        WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" MouseDown="Window_MouseDown" FontFamily="Cascadia Code" BorderThickness="6,0,0,0"
-        
+        WindowStyle="None" ResizeMode="NoResize" 
+        Background="{x:Null}" MouseDown="Window_MouseDown" 
+        FontFamily="Cascadia Code"
         >
 
     <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919">
-        <Grid>
-            <Label Content="Settings" Foreground="#dddddd" FontSize="20" Margin="10,10,190,348" FontWeight="Bold" FontFamily="Cascadia Code"/>
+        <Grid HorizontalAlignment="Left" Width="600" Margin="0,0,0,0">
+            <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,324" CornerRadius="20"/>
 
-            <Label Content="Server address" Foreground="#dddddd" FontSize="17" Margin="32,85,397,287" FontFamily="Cascadia Code" RenderTransformOrigin="0.5,0.5">
-                <Label.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform AngleX="-0.143"/>
-                        <RotateTransform/>
-                        <TranslateTransform X="-0.498"/>
-                    </TransformGroup>
-                </Label.RenderTransform>
-            </Label>
+            <Label x:Name="windowTitle" 
+                   Content="Settings" 
+                   Foreground="#dddddd" 
+                   FontSize="20" 
+                   FontWeight="Bold" 
+                   FontFamily="Cascadia Code" 
+                   Margin="10,12,450,336"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"/>
 
-            <TextBox Margin="37,119,136,244"
-                Name="serverAddressName" 
-                     Style="{StaticResource NormalTextBox}"
-            />
+            <Label x:Name="labelServerAddress" 
+                   Content="Server address" 
+                   Foreground="#dddddd" 
+                   FontSize="17" 
+                   Margin="37,79,361,284"
+                   FontFamily="Cascadia Code"
+                   HorizontalContentAlignment="Left"
+                   VerticalContentAlignment="Center"/>
 
-            <Button Margin="467,119,39,244"
-                    Name="saveServerAddress" 
+            <TextBox x:Name="serverAddressName" 
+                     Margin="43,119,130,244"
+                     Style="{StaticResource NormalTextBox}"/>
+
+            <Button x:Name="saveServerAddress"
+                    Margin="475,119,31,244"                     
                     Click="saveServerAddress_Click">
-                <Image Source="/assets/diskette.png" Width="25" Height="25"/>
+
+                <Image Source="/assets/diskette.png" 
+                       Width="25" 
+                       Height="25"/>
 
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource CloseButton}">
@@ -46,40 +57,20 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
-
             </Button>
 
-
             <!-- CLOSING BUTTON -->
-            <Button x:Name="CloseButtonSettings" Click="MaincloseWindowPersonalized"
+            <Button x:Name="CloseButtonSettings" 
+                    Click="MaincloseWindowPersonalized"
                     Style="{StaticResource CloseButton}"
-                    Margin="525,10,27,348" Width="40" Height="40" Cursor="Hand" ToolTip="Close">
+                    Margin="536,17,24,341" 
+                    Width="40" 
+                    Height="40" 
+                    Cursor="Hand" 
+                    ToolTip="Close">
                 <Image Source="/Styles/close.png" Width="20" Height="20"
                        VerticalAlignment="Center"/>
             </Button>
-
-            <!-- KILL BUTTON -->
-            <Button Click="killSender"
-                    Margin="480,10,72,348" Width="40" Height="40" ToolTip="Kill process" Cursor="Hand">
-                <Image Source="/assets/skullWhite.png" Width="25" Height="25"/>
-
-                <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource CloseButton}">
-                        <Setter Property="Background" Value="Black"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#dddd00"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-
-
         </Grid>
-
     </Border>
-
-
-
 </Window>
