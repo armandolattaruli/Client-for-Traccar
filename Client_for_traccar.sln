@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{D296C570-8A0E-4E9A-A406-D0C09FB06BEA}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TraccarClientSetup", "TraccarClientSetup\TraccarClientSetup.vdproj", "{48086D29-D286-476D-A789-0743BE2F31A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{D296C570-8A0E-4E9A-A406-D0C09FB06BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D296C570-8A0E-4E9A-A406-D0C09FB06BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D296C570-8A0E-4E9A-A406-D0C09FB06BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48086D29-D286-476D-A789-0743BE2F31A9}.Debug|Any CPU.ActiveCfg = Debug
+		{48086D29-D286-476D-A789-0743BE2F31A9}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
