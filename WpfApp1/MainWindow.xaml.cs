@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,7 +26,33 @@ namespace WpfApp1
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            createThread();
         }
+
+        private void createThread()
+        {
+            // Creare un token di cancellazione
+            CancellationTokenSource cts = new CancellationTokenSource();
+
+            // Creare un'istanza del task in background che esegue il lavoro
+            Task task = Task.Run(() =>
+            {
+                while (!cts.IsCancellationRequested)
+                {
+                    MessageBox.Show("Il task in background sta eseguendo il lavoro...");
+                    Thread.Sleep(1000); // Eseguire il lavoro per 1 secondo
+                }
+            }, cts.Token);
+
+            // Aggiungere un gestore dell'evento per la chiusura dell'applicazione principale
+            Application.Current.Exit += (sender, e) =>
+            {
+                // Annullare il token di cancellazione per terminare il task in background
+                cts.Cancel();
+            };
+
+        }
+
 
         private void rivelaPosizione(object sender, RoutedEventArgs e)
         {
@@ -39,7 +67,13 @@ namespace WpfApp1
             textForLongitude.Text = myGeoFinder.getLongitude();
             dateUpdate.Text = DateTime.Now.ToString();
 
+
             return;
+        }
+
+        private async void pippo()
+        {
+            MessageBox.Show("ciao");
         }
 
 
