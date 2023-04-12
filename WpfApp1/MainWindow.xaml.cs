@@ -28,47 +28,23 @@ namespace WpfApp1
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            createTask();
+            SharedData.createTask();
         }
 
-        private void createTask()
+        public void rivelaPosizione(object sender, RoutedEventArgs e)
         {
-            Task.Run(async () =>
-            {
-                while (!_cancellationTokenSource.Token.IsCancellationRequested)
-                {
-                    // Il codice che vuoi eseguire
-                    pippo();
-
-                    // Attendi per 5 secondi prima di eseguire nuovamente il codice
-                    await Task.Delay(TimeSpan.FromSeconds(3));
-                }
-            }, _cancellationTokenSource.Token);
-        }
-
-
-        private void rivelaPosizione(object sender, RoutedEventArgs e)
-        {
-            //MessageBox.Show("Zio pera");
-            GeoFinder myGeoFinder = new GeoFinder();
-            myGeoFinder.trova();
+            GeoFinder.trova();
 
             textForLatitude.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF2CB9F5");
             textForLongitude.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF2CB9F5");
             dateUpdate.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF2CB9F5");
-            textForLatitude.Text = myGeoFinder.getLatitude();
-            textForLongitude.Text = myGeoFinder.getLongitude();
+            textForLatitude.Text = GeoFinder.getLatitude();
+            textForLongitude.Text = GeoFinder.getLongitude();
             dateUpdate.Text = DateTime.Now.ToString();
 
 
             return;
         }
-
-        private void pippo()
-        {
-            MessageBox.Show("ciao");
-        }
-
 
         private void closeWindowPersonalized(object sender, RoutedEventArgs e)
         {
@@ -90,7 +66,7 @@ namespace WpfApp1
 
         private void killSender(object sender, RoutedEventArgs e)
         {
-            _cancellationTokenSource.Cancel();
+            SharedData.cancelTask();
         }
     }
 }
