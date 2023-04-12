@@ -12,6 +12,7 @@ namespace WpfApp1
         private static string userName, time, velocity, bearing, alti, precision, batt;
         private static string latitude, longitude;
 
+        //finds the position by using the GPS
         public static void findPosition()
         {
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
@@ -33,8 +34,6 @@ namespace WpfApp1
 
             latitude = coord.Latitude.ToString();
             latitude = latitude.Replace(',', '.');
-
-            // longitude = "46.9420094";
             longitude = coord.Longitude.ToString();
             longitude = longitude.Replace(',', '.');
 
@@ -52,6 +51,7 @@ namespace WpfApp1
             precision = media.ToString();
         }
 
+        //reads the address which hosts the Traccar server, from file
         private static string readLink()
         {
             string linkToServer = "";
@@ -61,27 +61,25 @@ namespace WpfApp1
             return linkToServer;
         }
 
+        //composes the string and send it to the server
         public static string magicClient()
         {
             WebClient client = new WebClient();
 
-            /// findPosition percentuale batteria
+            //finds battery percentage, if available
             ManagementObjectSearcher mos = new ManagementObjectSearcher("select * from Win32_Battery");
 
             foreach (ManagementObject mo in mos.Get())
-
             {
                 batt = mo["EstimatedChargeRemaining"].ToString();
             }
 
-            // "?id=" + userName + "&timestamp=1627595940&lat=" + latitude + "&lon=" + longitude + "&speed=" + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=" + + "&batt=" + batt + "
-            string datiVari = "/?id=" + "deadboo00000k_02" + "&timestamp=" + time + "&lat=" + latitude + "&lon=" + longitude + "&speed=" + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=2000.0";
-            //funziona alle 21.18 "?id=henlociao&timestamp=1627595440&lat=230.0519427&lon=17.088826&speed=0.0&bearing=90.0&altitude=68.0927084024509&accuracy=2000.0&batt=93.0"
-            string URI = readLink() + datiVari;
+            string entireString = "/?id=" + "deadboo00000k_02" + "&timestamp=" + time
+                + "&lat=" + latitude + "&lon=" + longitude + "&speed="
+                + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=2000.0";
+            string URI = readLink() + entireString;
 
-
-            client.UploadString(URI, datiVari);
-            Console.WriteLine("\nURI Parziale" + datiVari + "\n\nAggiornato.");
+            client.UploadString(URI, entireString);
             return URI;
         }
 
