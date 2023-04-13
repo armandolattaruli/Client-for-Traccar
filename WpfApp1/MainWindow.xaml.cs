@@ -35,7 +35,7 @@ namespace Client_for_Traccar
             _notifyIcon.Click += (s, e) =>
             {
                 // Creazione del menu
-                var menu = new System.Windows.Controls.ContextMenu();
+                var menu = new System.Windows.Controls.Menu();
                 var showMenuItem = new System.Windows.Controls.MenuItem();
                 var exitMenuItem = new System.Windows.Controls.MenuItem();
                 showMenuItem.Header = "Mostra finestra";
@@ -55,8 +55,8 @@ namespace Client_for_Traccar
                 menu.Items.Add(exitMenuItem);
 
                 // Mostra il menu vicino alla posizione del cursore
-                menu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
-                menu.IsOpen = true;
+
+                menu.Visibility = System.Windows.Visibility.Visible;
 
             };
         }
