@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using ContextMenu = System.Windows.Forms.ContextMenu;
 using MenuItem = System.Windows.Forms.MenuItem;
 using System.Windows.Controls;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Client_for_Traccar
@@ -14,7 +15,7 @@ namespace Client_for_Traccar
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
         private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         public NotifyIcon _notifyIcon;
@@ -30,8 +31,6 @@ namespace Client_for_Traccar
 
         public void createSysTray()
         {
-
-
             _notifyIcon = new NotifyIcon();
             _notifyIcon.Icon = new System.Drawing.Icon("../../assets/icon.ico"); // Path all'icona di notifica
             _notifyIcon.Visible = true;
@@ -41,7 +40,7 @@ namespace Client_for_Traccar
 
             _notifyIcon.Click += (s, e) =>
             {
-                // Creazione del menu
+                // Creazione del menu                
                 var menu = new System.Windows.Controls.ContextMenu();
                 var showMenuItem = new System.Windows.Controls.MenuItem();
                 var exitMenuItem = new System.Windows.Controls.MenuItem();
@@ -65,10 +64,11 @@ namespace Client_for_Traccar
                 // Mostra il menu vicino alla posizione del cursore
                 menu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
                 menu.IsOpen = true;
-
             };
-
         }
+
+
+
         public void revealPosition(object sender, RoutedEventArgs e)
         {
             GeoFinder.findPosition();
