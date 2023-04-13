@@ -4,7 +4,10 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Forms;
-using Client_for_Traccar;
+using ContextMenu = System.Windows.Forms.ContextMenu;
+using MenuItem = System.Windows.Forms.MenuItem;
+using System.Windows.Controls;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Client_for_Traccar
@@ -12,22 +15,59 @@ namespace Client_for_Traccar
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
         private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-        private NotifyIcon _notifyIcon;
+        public NotifyIcon _notifyIcon;
+        public ContextMenu _contextMenu;
+
         public MainWindow()
         {
+            createSysTray();
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             SharedData.createTask();
+        }
 
+        public void createSysTray()
+        {
             _notifyIcon = new NotifyIcon();
             _notifyIcon.Icon = new System.Drawing.Icon("../../assets/icon.ico"); // Path all'icona di notifica
             _notifyIcon.Visible = true;
             _notifyIcon.DoubleClick += (s, args) => Show();
             _notifyIcon.ShowBalloonTip(2, "Traccar Client for Windows", "Traccar Client is currently running", ToolTipIcon.Info);
+
+
+            _notifyIcon.Click += (s, e) =>
+            {
+                // Creazione del menu                
+                var menu = new System.Windows.Controls.ContextMenu();
+                var showMenuItem = new System.Windows.Controls.MenuItem();
+                var exitMenuItem = new System.Windows.Controls.MenuItem();
+
+                showMenuItem.Header = "Mostra finestra";
+                showMenuItem.Click += (s2, e2) =>
+                {
+                    // Codice per mostrare la finestra dell'applicazione
+                    this.Show();
+                    this.WindowState = WindowState.Normal;
+                };
+                exitMenuItem.Header = "Esci";
+                exitMenuItem.Click += (s2, e2) =>
+                {
+                    // Codice per uscire dall'applicazione
+                    System.Windows.Application.Current.Shutdown();
+                };
+                menu.Items.Add(showMenuItem);
+                menu.Items.Add(exitMenuItem);
+
+                // Mostra il menu vicino alla posizione del cursore
+                menu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
+                menu.IsOpen = true;
+            };
         }
+
+
 
         public void revealPosition(object sender, RoutedEventArgs e)
         {
