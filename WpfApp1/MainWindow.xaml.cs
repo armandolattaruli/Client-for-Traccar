@@ -33,6 +33,34 @@ namespace Client_for_Traccar
             _notifyIcon.Visible = true;
             _notifyIcon.DoubleClick += (s, args) => Show();
             _notifyIcon.ShowBalloonTip(2, "Traccar Client for Windows", "Traccar Client is currently running", ToolTipIcon.Info);
+
+            _notifyIcon.Click += (s, e) =>
+            {
+                    // Creazione del menu
+                    var menu = new System.Windows.Controls.ContextMenu();
+                    var showMenuItem = new System.Windows.Controls.MenuItem();
+                    var exitMenuItem = new System.Windows.Controls.MenuItem();
+                    showMenuItem.Header = "Mostra finestra";
+                    showMenuItem.Click += (s2, e2) =>
+                    {
+                        // Codice per mostrare la finestra dell'applicazione
+                        this.Show();
+                        this.WindowState = WindowState.Normal;
+                    };
+                    exitMenuItem.Header = "Esci";
+                    exitMenuItem.Click += (s2, e2) =>
+                    {
+                        // Codice per uscire dall'applicazione
+                        System.Windows.Application.Current.Shutdown();
+                    };
+                    menu.Items.Add(showMenuItem);
+                    menu.Items.Add(exitMenuItem);
+
+                    // Mostra il menu vicino alla posizione del cursore
+                    menu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
+                    menu.IsOpen = true;
+                
+            };
         }
 
         public void revealPosition(object sender, RoutedEventArgs e)
