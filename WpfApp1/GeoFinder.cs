@@ -3,6 +3,8 @@ using System.Net;
 using System.Device.Location;
 using System.Management;
 using System.IO;
+using System.Windows.Forms;
+using System.Windows;
 
 namespace WpfApp1
 {
@@ -15,38 +17,47 @@ namespace WpfApp1
         public static void findPosition()
         {
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
-            // Do not suppress prompt, and wait 1000 milliseconds to start.
-            do
+
+            //check for gps permission and state
+            if (!(watcher.Status.ToString() == GeoPositionStatus.Disabled.ToString() || watcher.Permission.ToString() == GeoPositionPermission.Denied.ToString()))
             {
-                watcher.TryStart(true, TimeSpan.FromMilliseconds(1500));
+                do
+                {
+                    watcher.TryStart(true, TimeSpan.FromMilliseconds(1500));
 
-                Console.WriteLine(watcher.Status.ToString());
-            } while (watcher.Status.ToString().Equals("NoData"));
+                    Console.WriteLine(watcher.Status.ToString());
+                } while (watcher.Status.ToString().Equals("NoData"));
 
 
-            GeoCoordinate coord = watcher.Position.Location;
+                GeoCoordinate coord = watcher.Position.Location;
 
-            userName = "henlociao";
-            var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-            time = Timestamp.ToString();
+                userName = "henlociao";
+                var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+                time = Timestamp.ToString();
 
-            latitude = coord.Latitude.ToString();
-            latitude = latitude.Replace(',', '.');
-            longitude = coord.Longitude.ToString();
-            longitude = longitude.Replace(',', '.');
+                latitude = coord.Latitude.ToString();
+                latitude = latitude.Replace(',', '.');
+                longitude = coord.Longitude.ToString();
+                longitude = longitude.Replace(',', '.');
 
-            velocity = "0.0";
-            bearing = "0.0";
+                velocity = "0.0";
+                bearing = "0.0";
 
-            alti = coord.Altitude.ToString();
-            alti = alti.Replace(',', '.');
+                alti = coord.Altitude.ToString();
+                alti = alti.Replace(',', '.');
 
-            double vertical, horizontal, media;
-            vertical = coord.VerticalAccuracy;
-            horizontal = coord.HorizontalAccuracy;
-            media = (vertical + horizontal) / 2;
+                double vertical, horizontal, media;
+                vertical = coord.VerticalAccuracy;
+                horizontal = coord.HorizontalAccuracy;
+                media = (vertical + horizontal) / 2;
 
-            precision = media.ToString();
+                precision = media.ToString();
+            }
+            else
+            {
+                //System.Windows.MessageBox.Show("Unable to access GPS device. Please, make sure to enable it and to give permission to this application.", "GPS error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show(watcher.Status.ToString());
+            }
         }
 
         //reads the address which hosts the Traccar server, from file
