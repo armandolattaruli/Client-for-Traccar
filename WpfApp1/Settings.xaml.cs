@@ -85,11 +85,11 @@ namespace WpfApp1
 
         private void saveConnectionTimeOut_click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Do you want to update the address of you Traccar server?", "Update File", MessageBoxButton.OKCancel);
+            MessageBoxResult result = MessageBox.Show("Do you want to update the connection time-out value?", "Update File", MessageBoxButton.OKCancel);
 
             if (result == MessageBoxResult.OK)
             {
-                writeToFile("", connectionTimeOut);
+                writeToFile("", connectionTimeOut);                
             }
         }
     }
