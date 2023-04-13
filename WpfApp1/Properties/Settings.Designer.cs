@@ -25,7 +25,7 @@ namespace Client_for_Traccar.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
         public int connectionTimeOut {
             get {
                 return ((int)(this["connectionTimeOut"]));
@@ -37,7 +37,7 @@ namespace Client_for_Traccar.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://demo3.traccar.org")]
         public string serverLink {
             get {
                 return ((string)(this["serverLink"]));

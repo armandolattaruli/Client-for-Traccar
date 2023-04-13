@@ -6,7 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Windows;
 
-namespace WpfApp1
+namespace Client_for_Traccar
 {
     public class GeoFinder
     {
