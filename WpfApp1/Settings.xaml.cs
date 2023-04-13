@@ -1,20 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.IO;
-using System.Threading;
-using System.Reflection;
-using Client_for_Traccar.Properties;
 
 namespace Client_for_Traccar
 {
@@ -26,9 +11,15 @@ namespace Client_for_Traccar
             loadLinkServer();
         }
 
-        private void loadLinkServer()
+        //load the saved server in the input box
+        public void loadLinkServer()
         {
-                serverAddressName.Text = Properties.Settings.Default.serverLink;
+            serverAddressName.Text = Properties.Settings.Default.serverLink;
+        }
+
+        public void loadConnectionTime()
+        {
+            connectionTimeOut.Text = Properties.Settings.Default.connectionTimeOut.ToString();
         }
 
         private void saveServerAddress_Click(object sender, RoutedEventArgs e)

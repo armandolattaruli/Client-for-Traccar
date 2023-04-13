@@ -19,15 +19,13 @@ namespace Client_for_Traccar
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
 
             //check for gps permission and state
-            if (!(watcher.Status.ToString() == GeoPositionStatus.Disabled.ToString() || watcher.Permission.ToString() == GeoPositionPermission.Denied.ToString()))
+            if (!(watcher.Status.ToString() == GeoPositionStatus.Disabled.ToString() || watcher.Status.ToString() == GeoPositionStatus.NoData.ToString()))
             {
+                //System.Windows.MessageBox.Show(watcher.Status.ToString());
                 do
                 {
                     watcher.TryStart(true, TimeSpan.FromMilliseconds(1500));
-
-                    Console.WriteLine(watcher.Status.ToString());
                 } while (watcher.Status.ToString().Equals("NoData"));
-
 
                 GeoCoordinate coord = watcher.Position.Location;
 
