@@ -4,9 +4,10 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Forms;
+using Client_for_Traccar;
 
 
-namespace WpfApp1
+namespace Client_for_Traccar
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

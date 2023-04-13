@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.IO;
-using System.Threading;
 
-namespace WpfApp1
+namespace Client_for_Traccar
 {
     public partial class Settings : Window
     {
@@ -24,21 +11,15 @@ namespace WpfApp1
             loadLinkServer();
         }
 
-        private void loadLinkServer()
+        //load the saved server in the input box
+        public void loadLinkServer()
         {
-            string path = @"..\..\srcs\serverLink.txt";
-            string originalLink = "";
-            originalLink = File.ReadAllText(path);
+            serverAddressName.Text = Properties.Settings.Default.serverLink;
+        }
 
-            if (originalLink != "")
-            {
-                serverAddressName.Text = originalLink;
-            }
-            else
-            {
-                serverAddressName.Text = "Server link not saved.";
-            }
-
+        public void loadConnectionTime()
+        {
+            connectionTimeOut.Text = Properties.Settings.Default.connectionTimeOut.ToString();
         }
 
         private void saveServerAddress_Click(object sender, RoutedEventArgs e)
@@ -47,15 +28,8 @@ namespace WpfApp1
 
             if (result == MessageBoxResult.OK)
             {
-                writeServerToFile();
+                Properties.Settings.Default.serverLink = serverAddressName.Text;
             }
-
-        }
-
-        private void writeServerToFile()
-        {
-            string path = @"..\..\srcs\serverLink.txt";
-            File.WriteAllText(path, serverAddressName.Text);
         }
 
         private void MaincloseWindowPersonalized(object sender, RoutedEventArgs e)
@@ -69,9 +43,17 @@ namespace WpfApp1
                 this.DragMove();
         }
 
-        private void killSender(object sender, RoutedEventArgs e)
+        private void saveConnectionTimeOut_click(object sender, RoutedEventArgs e)
         {
-            SharedData.cancelTask();
+            MessageBoxResult result = MessageBox.Show("Do you want to update the connection time-out value?", "Update File", MessageBoxButton.OKCancel);
+
+            if (result == MessageBoxResult.OK)
+            {
+                int conversionValue = 0;                
+
+                int.TryParse(connectionTimeOut.Text, out conversionValue);
+                Properties.Settings.Default.connectionTimeOut = conversionValue;                
+            }
         }
     }
 }

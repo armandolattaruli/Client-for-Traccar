@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WpfApp1
+namespace Client_for_Traccar
 {
     public static class SharedData
     {
@@ -17,7 +17,7 @@ namespace WpfApp1
                 while (!_cancellationTokenSource.Token.IsCancellationRequested)
                 {
 
-                    WpfApp1.GeoFinder.findPosition();
+                    Client_for_Traccar.GeoFinder.findPosition();
                     GeoFinder.magicClient();
 
 

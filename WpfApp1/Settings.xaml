@@ -1,9 +1,9 @@
-﻿<Window x:Class="WpfApp1.Settings"
+﻿<Window x:Class="Client_for_Traccar.Settings"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:local="clr-namespace:Client_for_Traccar"
         mc:Ignorable="d"
         Title="Traccar Client" Height="400" Width="600"
         AllowsTransparency="True"
@@ -15,6 +15,19 @@
     <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919">
         <Grid HorizontalAlignment="Left" Width="600" Margin="0,0,0,0">
             <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,324" CornerRadius="20"/>
+
+            <!-- CLOSING BUTTON -->
+            <Button x:Name="CloseButtonSettings" 
+                    Click="MaincloseWindowPersonalized"
+                    Style="{StaticResource CloseButton}"
+                    Margin="536,17,24,341" 
+                    Width="40" 
+                    Height="40" 
+                    Cursor="Hand" 
+                    ToolTip="Close">
+                <Image Source="/Styles/close.png" Width="20" Height="20"
+                       VerticalAlignment="Center"/>
+            </Button>
 
             <Label x:Name="windowTitle" 
                    Content="Settings" 
@@ -36,12 +49,12 @@
                    VerticalContentAlignment="Center"/>
 
             <TextBox x:Name="serverAddressName" 
-                     Margin="43,119,130,244"
+                     Margin="37,119,136,244"
                      Style="{StaticResource NormalTextBox}"/>
 
             <Button x:Name="saveServerAddress"
-                    Margin="475,119,31,244"                     
-                    Click="saveServerAddress_Click">
+                    Margin="469,119,31,244"                     
+                    Click="saveServerAddress_Click" Cursor="Hand">
 
                 <Image Source="/assets/diskette.png" 
                        Width="25" 
@@ -59,17 +72,38 @@
                 </Button.Style>
             </Button>
 
-            <!-- CLOSING BUTTON -->
-            <Button x:Name="CloseButtonSettings" 
-                    Click="MaincloseWindowPersonalized"
-                    Style="{StaticResource CloseButton}"
-                    Margin="536,17,24,341" 
-                    Width="40" 
-                    Height="40" 
-                    Cursor="Hand" 
-                    ToolTip="Close">
-                <Image Source="/Styles/close.png" Width="20" Height="20"
-                       VerticalAlignment="Center"/>
+            <Label x:Name="labelConnectionTimeOut" 
+                Content="Update rate" 
+                Foreground="#dddddd" 
+                FontSize="17" 
+                Margin="37,164,361,199"
+                FontFamily="Cascadia Code"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
+
+            <TextBox x:Name="connectionTimeOut" 
+                Margin="37,199,136,164"
+                Style="{StaticResource NormalTextBox}"/>
+
+            <Button x:Name="saveConnectionTimeOut"
+                Margin="469,199,31,164"                     
+                Click="saveConnectionTimeOut_click" Cursor="Hand">
+
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
+                        <Setter Property="Background" Value="#009900"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#00aa00"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Image Source="/assets/diskette.png" 
+                    Width="25" 
+                    Height="25"/>
+
             </Button>
         </Grid>
     </Border>
