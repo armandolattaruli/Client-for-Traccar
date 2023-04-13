@@ -50,54 +50,54 @@ namespace Client_for_Traccar
             media = (vertical + horizontal) / 2;
 
             precision = media.ToString();
+            //}
+            //else
+            //{
+            //    //System.Windows.MessageBox.Show("Unable to access GPS device. Please, make sure to enable it and to give permission to this application.", "GPS error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    System.Windows.MessageBox.Show(watcher.Status.ToString());
+            //}
         }
-        //else
-        //{
-        //    //System.Windows.MessageBox.Show("Unable to access GPS device. Please, make sure to enable it and to give permission to this application.", "GPS error", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    System.Windows.MessageBox.Show(watcher.Status.ToString());
-        //}
-    }
 
-    //reads the address which hosts the Traccar server, from file
-    private static string readLink()
-    {
-        string linkToServer = "";
-        string path = @"..\..\srcs\serverLink.txt";
-        linkToServer = File.ReadAllText(path);
-
-        return linkToServer;
-    }
-
-    //composes the string and send it to the server
-    public static string magicClient()
-    {
-        WebClient client = new WebClient();
-
-        //finds battery percentage, if available
-        ManagementObjectSearcher mos = new ManagementObjectSearcher("select * from Win32_Battery");
-
-        foreach (ManagementObject mo in mos.Get())
+        //reads the address which hosts the Traccar server, from file
+        private static string readLink()
         {
-            batt = mo["EstimatedChargeRemaining"].ToString();
+            string linkToServer = "";
+            string path = @"..\..\srcs\serverLink.txt";
+            linkToServer = File.ReadAllText(path);
+
+            return linkToServer;
         }
 
-        string entireString = "/?id=" + "deadboo00000k_02" + "&timestamp=" + time
-            + "&lat=" + latitude + "&lon=" + longitude + "&speed="
-            + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=2000.0";
-        string URI = readLink() + entireString;
+        //composes the string and send it to the server
+        public static string magicClient()
+        {
+            WebClient client = new WebClient();
 
-        client.UploadString(URI, entireString);
-        return URI;
-    }
+            //finds battery percentage, if available
+            ManagementObjectSearcher mos = new ManagementObjectSearcher("select * from Win32_Battery");
 
-    public static string getLatitude()
-    {
-        return latitude;
-    }
+            foreach (ManagementObject mo in mos.Get())
+            {
+                batt = mo["EstimatedChargeRemaining"].ToString();
+            }
 
-    public static string getLongitude()
-    {
-        return longitude;
+            string entireString = "/?id=" + "deadboo00000k_02" + "&timestamp=" + time
+                + "&lat=" + latitude + "&lon=" + longitude + "&speed="
+                + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=2000.0";
+            string URI = readLink() + entireString;
+
+            client.UploadString(URI, entireString);
+            return URI;
+        }
+
+        public static string getLatitude()
+        {
+            return latitude;
+        }
+
+        public static string getLongitude()
+        {
+            return longitude;
+        }
     }
-}
 }

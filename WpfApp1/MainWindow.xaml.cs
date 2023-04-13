@@ -4,7 +4,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Forms;
-using Client_for_Traccar;
+using ContextMenu = System.Windows.Forms.ContextMenu;
+using MenuItem = System.Windows.Forms.MenuItem;
+using System.Windows.Controls;
 
 
 namespace Client_for_Traccar
@@ -15,7 +17,9 @@ namespace Client_for_Traccar
     public partial class MainWindow : Window
     {
         private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-        private NotifyIcon _notifyIcon;
+        public NotifyIcon _notifyIcon;
+        public ContextMenu _contextMenu;
+
         public MainWindow()
         {
             createSysTray();
@@ -26,18 +30,22 @@ namespace Client_for_Traccar
 
         public void createSysTray()
         {
+
+
             _notifyIcon = new NotifyIcon();
             _notifyIcon.Icon = new System.Drawing.Icon("../../assets/icon.ico"); // Path all'icona di notifica
             _notifyIcon.Visible = true;
             _notifyIcon.DoubleClick += (s, args) => Show();
             _notifyIcon.ShowBalloonTip(2, "Traccar Client for Windows", "Traccar Client is currently running", ToolTipIcon.Info);
 
+
             _notifyIcon.Click += (s, e) =>
             {
                 // Creazione del menu
-                var menu = new System.Windows.Controls.Menu();
+                var menu = new System.Windows.Controls.ContextMenu();
                 var showMenuItem = new System.Windows.Controls.MenuItem();
                 var exitMenuItem = new System.Windows.Controls.MenuItem();
+
                 showMenuItem.Header = "Mostra finestra";
                 showMenuItem.Click += (s2, e2) =>
                 {
@@ -55,12 +63,12 @@ namespace Client_for_Traccar
                 menu.Items.Add(exitMenuItem);
 
                 // Mostra il menu vicino alla posizione del cursore
-
-                menu.Visibility = System.Windows.Visibility.Visible;
+                menu.Placement = System.Windows.Controls.Primitives.PlacementMode.MousePoint;
+                menu.IsOpen = true;
 
             };
-        }
 
+        }
         public void revealPosition(object sender, RoutedEventArgs e)
         {
             GeoFinder.findPosition();
