@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using System.Threading;
+using System.Reflection;
 
 namespace WpfApp1
 {
@@ -47,15 +48,23 @@ namespace WpfApp1
 
             if (result == MessageBoxResult.OK)
             {
-                writeServerToFile();
+                writeToFile(@"..\..\srcs\serverLink.txt", serverAddressName);
             }
-
         }
 
-        private void writeServerToFile()
+        private void writeToFile(string path, TextBox myField)
         {
-            string path = @"..\..\srcs\serverLink.txt";
-            File.WriteAllText(path, serverAddressName.Text);
+            //string path = @"..\..\srcs\serverLink.txt";
+            if (File.Exists(path))
+            {
+                MessageBox.Show("File presente!");
+                File.WriteAllText(path, myField.Text);
+            }
+            else
+            {
+                MessageBox.Show("File NON presente!");
+            }
+            
         }
 
         private void MaincloseWindowPersonalized(object sender, RoutedEventArgs e)
@@ -80,7 +89,7 @@ namespace WpfApp1
 
             if (result == MessageBoxResult.OK)
             {
-                writeServerToFile();
+                writeToFile("", connectionTimeOut);
             }
         }
     }
