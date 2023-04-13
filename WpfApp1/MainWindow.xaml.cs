@@ -18,10 +18,16 @@ namespace Client_for_Traccar
         private NotifyIcon _notifyIcon;
         public MainWindow()
         {
+            createSysTray();
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             SharedData.createTask();
 
+
+        }
+
+        public void createSysTray()
+        {
             _notifyIcon = new NotifyIcon();
             _notifyIcon.Icon = new System.Drawing.Icon("../../assets/icon.ico"); // Path all'icona di notifica
             _notifyIcon.Visible = true;
