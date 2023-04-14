@@ -22,7 +22,7 @@
     <Style TargetType="{x:Type MenuItem}">
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="#FF2F2F2F" />
-        <Setter Property="Padding" Value="15" />
+        <Setter Property="Padding" Value="30,15,30,15" />
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Template">
             <Setter.Value>
