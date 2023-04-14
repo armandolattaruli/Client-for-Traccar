@@ -114,7 +114,7 @@
             </Button>
 
             <!-- KILL BUTTON -->
-            <Button x:Name="killButton"
+            <!--<Button x:Name="killButton"
                     Click="killSender"
                     Margin="105,10,55,25" 
                     Width="40" 
@@ -135,20 +135,20 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
-            </Button>
+            </Button>-->
 
             <!-- CREATE NEW TASK BUTTON -->
-            <Button x:Name="birthButton"
+            <Button x:Name="playPauseButton"
                     Click="newBackgroundTask"
-                    Margin="60,10,100,25" 
+                    Margin="100,11,60,24" 
                     Width="40" 
                     Height="40" 
                     ToolTip="Create new background process" 
                     Cursor="Hand" 
                     Grid.Column="2" >
-                <Image Source="/assets/plus.png" 
-                       Width="28" 
-                       Height="28"/>
+                <Image Source="/assets/pause.png" 
+                       Width="25" 
+                       Height="25"/>
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource CloseButton}">
                         <Setter Property="Background" Value="{DynamicResource SecondaryBlue}"/>

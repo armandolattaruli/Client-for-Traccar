@@ -110,10 +110,12 @@ namespace Client_for_Traccar
             if (ThreadForGPS.getIsPaused())
             {
                 ThreadForGPS.Resume();
+                playPauseButton.Background = new SolidColorBrush(Color.FromRgb(0x00, 0x99, 0x00));
             }
             else
             {
                 ThreadForGPS.Pause();
+                playPauseButton.Background = new SolidColorBrush(Color.FromRgb(0x99, 0x00, 0x00));
             }
         }
     }
