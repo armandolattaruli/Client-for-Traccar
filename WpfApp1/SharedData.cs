@@ -11,12 +11,21 @@ namespace Client_for_Traccar
 {
     public static class SharedData
     {
-        public static CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+        public static CancellationTokenSource myCancelTokeken = new CancellationTokenSource();
+        public static TaskStatus taskStatus = new TaskStatus();
+        public static Task _task;
+
+        public static TaskStatus getTaskStatus()
+        {
+            return _task.Status;
+        }
+
         public static void createTask(MainWindow mainWindow)
         {
-            Task.Run(async () =>
+
+            _task = Task.Run(async () =>
             {
-                while (!_cancellationTokenSource.Token.IsCancellationRequested)
+                while (!myCancelTokeken.Token.IsCancellationRequested)
                 {
 
                     Client_for_Traccar.GeoFinder.findPosition();
@@ -32,15 +41,27 @@ namespace Client_for_Traccar
                         mainWindow.dateUpdate.Text = DateTime.Now.ToString();
                     });
 
-                    // Wait 10 seconds before sending position again
-                    await Task.Delay(TimeSpan.FromSeconds(Properties.Settings.Default.connectionTimeOut));
+                    Console.WriteLine("Currently running task: " + Task.CurrentId?.ToString());
+
+                    // Wait x seconds before sending position again
+                    // x has been set by the user through the settings window
+                    try
+                    {
+                        await Task.Delay(TimeSpan.FromSeconds(Properties.Settings.Default.connectionTimeOut), myCancelTokeken.Token);
+                    }
+                    catch (TaskCanceledException)
+                    {
+                        Console.WriteLine("Task was cancelled.");
+                        break;  // exit the loop
+                    }
                 }
-            }, _cancellationTokenSource.Token);
+                MessageBox.Show("CANCELLATION HAS BEEN REQUESTED.");
+            }, myCancelTokeken.Token);
         }
 
-        public static void cancelTask()
+        public static void StopTask()
         {
-            _cancellationTokenSource.Cancel();
+            myCancelTokeken.Cancel();
         }
     }
 }

@@ -8,16 +8,12 @@ using ContextMenu = System.Windows.Forms.ContextMenu;
 using MenuItem = System.Windows.Forms.MenuItem;
 using System.Windows.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+using System.Threading.Tasks;
 
 namespace Client_for_Traccar
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
-        private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         public NotifyIcon _notifyIcon;
         public ContextMenu _contextMenu;
 
@@ -26,6 +22,9 @@ namespace Client_for_Traccar
             createSysTray();
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            //passing this window as parameter.
+            //This is done in order to change the GPS data and update time in this window.
             SharedData.createTask(this);
         }
 
@@ -84,7 +83,6 @@ namespace Client_for_Traccar
 
         private void closeWindowPersonalized(object sender, RoutedEventArgs e)
         {
-            //Close();
             Hide();
         }
 
@@ -103,7 +101,27 @@ namespace Client_for_Traccar
 
         private void killSender(object sender, RoutedEventArgs e)
         {
-            SharedData.cancelTask();
+            //SharedData.cancelTask();
+            //System.Windows.MessageBox.Show(SharedData.getTaskStatus().ToString());
+            Console.WriteLine(SharedData.getTaskStatus().ToString());
+            SharedData.StopTask();
+
+
+            Console.WriteLine(SharedData.getTaskStatus().ToString());
+
+        }
+
+        private void newBackgroundTask(object sender, RoutedEventArgs e)
+        {
+            if (SharedData.getTaskStatus().ToString() == TaskStatus.RanToCompletion.ToString() || SharedData.getTaskStatus().ToString() == TaskStatus.WaitingToRun.ToString())
+            {
+                SharedData.createTask(this);
+                System.Windows.MessageBox.Show("New task created! widht" + Task.CurrentId);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Task is already running");
+            }
         }
     }
 }
