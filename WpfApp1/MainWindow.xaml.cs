@@ -26,7 +26,7 @@ namespace Client_for_Traccar
             //passing this window as parameter.
             //This is done in order to change the GPS data and update time in this window.
             //SharedData.createTask(this);
-            ThreadForGPS.Start(Properties.Settings.Default.connectionTimeOut, this);
+            ThreadForGPS.Start(this);
         }
 
         public void createSysTray()

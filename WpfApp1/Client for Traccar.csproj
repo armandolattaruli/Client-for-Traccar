@@ -98,7 +98,6 @@
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SharedData.cs" />
     <Compile Include="ThreadForGPS.cs" />
     <Page Include="Styles\MainStyle.xaml">
       <SubType>Designer</SubType>

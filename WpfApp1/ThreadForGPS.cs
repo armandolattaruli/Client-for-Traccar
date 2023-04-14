@@ -13,11 +13,9 @@ namespace Client_for_Traccar
     {
         private static Thread thread;
         private static bool isPaused;
-        private static int intervalInSeconds;
 
-        public static void Start(int interval, MainWindow mainWindow)
+        public static void Start(MainWindow mainWindow)
         {
-            intervalInSeconds = interval;
             thread = new Thread(() =>
             {
                 while (true)
@@ -37,9 +35,8 @@ namespace Client_for_Traccar
                             mainWindow.textForLongitude.Text = GeoFinder.getLongitude();
                             mainWindow.dateUpdate.Text = DateTime.Now.ToString();
                         });
-                        Console.WriteLine("Thread eseguito");
 
-                        Thread.Sleep(intervalInSeconds * 1000);
+                        Thread.Sleep(Properties.Settings.Default.connectionTimeOut * 1000);
                     }
                     else
                     {
@@ -48,7 +45,7 @@ namespace Client_for_Traccar
                 }
             });
             thread.Start();
-            MessageBox.Show("Thread startato");
+            Console.WriteLine("Thread started");
         }
 
         public static void Pause()
