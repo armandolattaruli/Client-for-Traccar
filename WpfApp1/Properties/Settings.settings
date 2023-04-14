@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="connectionTimeOut" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">60</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="serverLink" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://demo3.traccar.org</Value>
