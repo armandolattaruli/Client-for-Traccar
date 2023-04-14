@@ -58,10 +58,5 @@ namespace Client_for_Traccar
                 MessageBox.Show("CANCELLATION HAS BEEN REQUESTED.");
             }, myCancelTokeken.Token);
         }
-
-        public static void StopTask()
-        {
-            myCancelTokeken.Cancel();
-        }
     }
 }

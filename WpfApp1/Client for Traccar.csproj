@@ -99,6 +99,7 @@
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="SharedData.cs" />
+    <Compile Include="ThreadForGPS.cs" />
     <Page Include="Styles\MainStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,9 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="srcs\serverLink.txt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\close.png" />

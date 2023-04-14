@@ -25,7 +25,8 @@ namespace Client_for_Traccar
 
             //passing this window as parameter.
             //This is done in order to change the GPS data and update time in this window.
-            SharedData.createTask(this);
+            //SharedData.createTask(this);
+            ThreadForGPS.Start(Properties.Settings.Default.connectionTimeOut, this);
         }
 
         public void createSysTray()
@@ -101,26 +102,18 @@ namespace Client_for_Traccar
 
         private void killSender(object sender, RoutedEventArgs e)
         {
-            //SharedData.cancelTask();
-            //System.Windows.MessageBox.Show(SharedData.getTaskStatus().ToString());
-            Console.WriteLine(SharedData.getTaskStatus().ToString());
-            SharedData.StopTask();
-
-
-            Console.WriteLine(SharedData.getTaskStatus().ToString());
 
         }
 
         private void newBackgroundTask(object sender, RoutedEventArgs e)
         {
-            if (SharedData.getTaskStatus().ToString() == TaskStatus.RanToCompletion.ToString() || SharedData.getTaskStatus().ToString() == TaskStatus.WaitingToRun.ToString())
+            if (ThreadForGPS.getIsPaused())
             {
-                SharedData.createTask(this);
-                System.Windows.MessageBox.Show("New task created! widht" + Task.CurrentId);
+                ThreadForGPS.Resume();
             }
             else
             {
-                System.Windows.MessageBox.Show("Task is already running");
+                ThreadForGPS.Pause();
             }
         }
     }
