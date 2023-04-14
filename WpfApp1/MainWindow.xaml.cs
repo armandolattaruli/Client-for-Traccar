@@ -26,7 +26,7 @@ namespace Client_for_Traccar
             createSysTray();
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            SharedData.createTask();
+            SharedData.createTask(this);
         }
 
         public void createSysTray()
@@ -66,7 +66,6 @@ namespace Client_for_Traccar
                 menu.IsOpen = true;
             };
         }
-
 
 
         public void revealPosition(object sender, RoutedEventArgs e)
