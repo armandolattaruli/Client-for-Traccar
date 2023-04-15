@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style TargetType="Menu" x:Key="generalMenu">
+    <Style TargetType="ComboBox" x:Key="generalMenu">
         <Setter Property="Background" Value="Violet"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderBrush" Value="DarkGray"/>
@@ -9,7 +9,7 @@
         <Setter Property="Padding" Value="4"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Menu">
+                <ControlTemplate TargetType="ComboBox">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             CornerRadius="10">
@@ -23,30 +23,59 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type MenuItem}" x:Key="generalMenuItem">
-        <Setter Property="Foreground" Value="White" />
-        <Setter Property="Background" Value="#ff0000" />
-        <Setter Property="Padding" Value="30,15,30,15" />
+    <Style TargetType="{x:Type ComboBoxItem}" x:Key="generalMenuItem">
+        <Setter Property="Foreground" Value="#bbbbbb" />
+        <Setter Property="Background" Value="{DynamicResource DarkGray}" />
+        <Setter Property="Padding" Value="10 10 10 10" />
         <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Padding" Value="5"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type MenuItem}">
-                    <Border Name="Border" Background="{TemplateBinding Background}" 
-                            BorderThickness="{TemplateBinding BorderThickness}" 
-                            BorderBrush="{TemplateBinding BorderBrush}" 
-                            SnapsToDevicePixels="False"
+                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
                             Padding="{TemplateBinding Padding}"
                             CornerRadius="10">
-                        <ContentPresenter Name="HeaderHost" ContentSource="Header" RecognizesAccessKey="True" />
+                        <ContentPresenter/>
                     </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="radioButtonDevice" TargetType="{x:Type RadioButton}">
+        <Setter Property="Foreground" Value="#999999"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid>
+                        <Ellipse x:Name="RadioButtonEllipse"
+                             Width="15"
+                             Height="15"
+                             Fill="#999999"
+                             Stroke="{TemplateBinding BorderBrush}"
+                             StrokeThickness="1"
+                             VerticalAlignment="Center"
+                              HorizontalAlignment="Left"
+                             Margin="0,0,5,0"/>
+
+                        <ContentPresenter x:Name="RadioButtonContentPresenter"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      Margin="30,0,0,0"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                    </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsHighlighted" Value="True">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource SecondaryBlue}" />
-                            <Setter TargetName="Border" Property="BorderBrush" Value="transparent" />
-                            <Setter Property="Foreground" Value="white"/>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="RadioButtonEllipse" Property="Fill" Value="#FF2CB9F5"/>
+                            <Setter Property="Foreground" Value="White"/>
                         </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="HeaderHost" Property="TextElement.Foreground" Value="transparent" />
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RadioButtonEllipse" Property="Fill" Value="#00aa00"/>
+                            <Setter Property="Foreground" Value="White"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

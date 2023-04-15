@@ -49,10 +49,10 @@ namespace Client_for_Traccar
 
             if (result == MessageBoxResult.OK)
             {
-                int conversionValue = 0;                
+                int conversionValue = 0;
 
                 int.TryParse(connectionTimeOut.Text, out conversionValue);
-                Properties.Settings.Default.connectionTimeOut = conversionValue;                
+                Properties.Settings.Default.connectionTimeOut = conversionValue;
             }
         }
     }
