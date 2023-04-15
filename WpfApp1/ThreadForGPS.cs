@@ -35,15 +35,19 @@ namespace Client_for_Traccar
                             mainWindow.textForLongitude.Text = GeoFinder.getLongitude();
                             mainWindow.dateUpdate.Text = DateTime.Now.ToString();
 
-                            //mainWindow.threadIsRunning.Visibility = Visibility.Visible;
-                            //mainWindow.threadSuspended.Visibility = Visibility.Hidden;
+                            mainWindow.threadIsRunning.Visibility = Visibility.Visible;
+                            mainWindow.threadSuspended.Visibility = Visibility.Hidden;
                         });
-
                         Thread.Sleep(Properties.Settings.Default.connectionTimeOut * 1000);
                         Console.WriteLine("Thread being executed...");
                     }
                     else
                     {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            mainWindow.threadIsRunning.Visibility = Visibility.Hidden;
+                            mainWindow.threadSuspended.Visibility = Visibility.Visible;
+                        });
                         Thread.Sleep(100);
                     }
                 }
