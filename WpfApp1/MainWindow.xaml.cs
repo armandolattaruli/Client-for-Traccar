@@ -9,7 +9,6 @@ using MenuItem = System.Windows.Forms.MenuItem;
 using System.Windows.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Threading.Tasks;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Client_for_Traccar
 {
@@ -25,15 +24,14 @@ namespace Client_for_Traccar
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             //passing this window as parameter.
-            //This is done in order to change the GPS data and update time in this window.
-            //SharedData.createTask(this);
+            //This is done in order to change the GPS data and update time in this window
             ThreadForGPS.Start(this);
         }
 
         public void createSysTray()
         {
             _notifyIcon = new NotifyIcon();
-            _notifyIcon.Icon = new System.Drawing.Icon("../../assets/icon.ico"); // Path all'icona di notifica
+            _notifyIcon.Icon = new System.Drawing.Icon(Properties.Resources.iconForSysTray, 40, 40);
             _notifyIcon.Visible = true;
             _notifyIcon.DoubleClick += (s, args) => Show();
             _notifyIcon.ShowBalloonTip(2, "Traccar Client for Windows", "Traccar Client is currently running", ToolTipIcon.Info);
