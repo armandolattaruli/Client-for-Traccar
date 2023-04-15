@@ -220,5 +220,11 @@
   <ItemGroup>
     <None Include="assets\icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\onlyPause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\onlyPause.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

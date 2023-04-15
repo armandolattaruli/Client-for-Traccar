@@ -9,6 +9,7 @@ using MenuItem = System.Windows.Forms.MenuItem;
 using System.Windows.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Threading.Tasks;
+using System.Security.Permissions;
 
 namespace Client_for_Traccar
 {
@@ -31,7 +32,7 @@ namespace Client_for_Traccar
         public void createSysTray()
         {
             _notifyIcon = new NotifyIcon();
-            _notifyIcon.Icon = new System.Drawing.Icon(Properties.Resources.iconForSysTray, 40, 40);
+            _notifyIcon.Icon = new System.Drawing.Icon(Properties.Resources.iconForSysTray, 100, 100);
             _notifyIcon.Visible = true;
             _notifyIcon.DoubleClick += (s, args) => Show();
             _notifyIcon.ShowBalloonTip(2, "Traccar Client for Windows", "Traccar Client is currently running", ToolTipIcon.Info);
@@ -67,6 +68,10 @@ namespace Client_for_Traccar
             };
         }
 
+        public void modifySystray(System.Drawing.Icon icon)
+        {
+            _notifyIcon.Icon = icon;
+        }
 
         public void revealPosition(object sender, RoutedEventArgs e)
         {
@@ -113,6 +118,7 @@ namespace Client_for_Traccar
                 playPauseButton.MouseEnter += (s, ev) => playPauseButton_MouseEnter(s, ev, "#00bb00");
                 playPauseButton.MouseLeave += (s, ev) => playPauseButton_MouseEnter(s, ev, "#009900");
                 playPauseButton.ToolTip = "Click to pause the sender";
+                modifySystray(Properties.Resources.iconForSysTray);
             }
             else
             {
@@ -122,6 +128,7 @@ namespace Client_for_Traccar
                 playPauseButton.MouseLeave += (s, ev) => playPauseButton_MouseEnter(s, ev, Brushes.DarkRed.ToString());
                 playPauseButton.MouseEnter += (s, ev) => playPauseButton_MouseEnter(s, ev, "#bb0000");
                 playPauseButton.ToolTip = "Click to resume the sender";
+                modifySystray(Properties.Resources.onlyPause);
             }
         }
 
