@@ -71,7 +71,10 @@ namespace Client_for_Traccar
 
         public static void killThread()
         {
-            thread.Abort();
+            if (thread.IsAlive)
+            {
+                thread.Abort();
+            }
         }
     }
 }

@@ -10,7 +10,8 @@ namespace Client_for_Traccar
 {
     public class GeoFinder
     {
-        private static string userName, time, velocity, bearing, alti, precision, batt;
+        //userName,
+        private static string time, velocity, bearing, alti, precision, batt;
         private static string latitude, longitude;
 
         //finds the position by using the GPS
@@ -29,7 +30,7 @@ namespace Client_for_Traccar
 
             GeoCoordinate coord = watcher.Position.Location;
 
-            userName = "henlociao";
+            //userName = "henlociao";
             var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
             time = Timestamp.ToString();
 
