@@ -114,12 +114,12 @@
             </Button>
 
             <!-- KILL BUTTON -->
-            <Button x:Name="killButton"
+            <!--<Button x:Name="killButton"
                     Click="killSender"
                     Margin="105,10,55,25" 
                     Width="40" 
                     Height="40" 
-                    ToolTip="Kill process" 
+                    ToolTip="Kill active background process" 
                     Cursor="Hand" 
                     Grid.Column="2" >
                 <Image Source="/assets/skullWhite.png" 
@@ -131,6 +131,30 @@
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#dddd00"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>-->
+
+            <!-- CREATE NEW TASK BUTTON -->
+            <Button x:Name="playPauseButton"
+                    Click="newBackgroundTask"
+                    Margin="100,11,60,24" 
+                    Width="40" 
+                    Height="40" 
+                    ToolTip="Play/pause the sender" 
+                    Cursor="Hand" 
+                    Grid.Column="2" >
+                <Image Source="/assets/pause.png" 
+                       Width="25" 
+                       Height="25"/>
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource CloseButton}">
+                        <Setter Property="Background" Value="{DynamicResource SecondaryBlue}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource PrimaryBlue}"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>

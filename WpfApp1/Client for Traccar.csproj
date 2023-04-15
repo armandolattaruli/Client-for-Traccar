@@ -98,7 +98,7 @@
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SharedData.cs" />
+    <Compile Include="ThreadForGPS.cs" />
     <Page Include="Styles\MainStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,9 +158,6 @@
     <Resource Include="assets\settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="srcs\serverLink.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="assets\close.png" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +195,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\pause.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

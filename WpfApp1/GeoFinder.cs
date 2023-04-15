@@ -61,11 +61,7 @@ namespace Client_for_Traccar
         //reads the address which hosts the Traccar server, from file
         private static string readLink()
         {
-            string linkToServer = "";
-            string path = @"..\..\srcs\serverLink.txt";
-            linkToServer = File.ReadAllText(path);
-
-            return linkToServer;
+            return Properties.Settings.Default.serverLink;
         }
 
         //composes the string and send it to the server
