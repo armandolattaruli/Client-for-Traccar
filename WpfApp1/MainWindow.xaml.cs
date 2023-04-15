@@ -9,6 +9,7 @@ using MenuItem = System.Windows.Forms.MenuItem;
 using System.Windows.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Client_for_Traccar
 {
@@ -110,13 +111,30 @@ namespace Client_for_Traccar
             if (ThreadForGPS.getIsPaused())
             {
                 ThreadForGPS.Resume();
-                playPauseButton.Background = new SolidColorBrush(Color.FromRgb(0x00, 0x99, 0x00));
+                //playPauseButton.Background = new SolidColorBrush(Color.FromRgb(0x00, 0x99, 0x00));
+                //
+
+                //sets background color based on "mouseOver"
+                playPauseButton.Background = Brushes.DarkRed;
+                playPauseButton.MouseLeave += (s, ev) => playPauseButton_MouseEnter(s, ev, Brushes.DarkRed.ToString());
+                playPauseButton.MouseEnter += (s, ev) => playPauseButton_MouseEnter(s, ev, "#bb0000");
+                playPauseButton.ToolTip = "Click to pause the sender";
+
             }
             else
             {
                 ThreadForGPS.Pause();
-                playPauseButton.Background = new SolidColorBrush(Color.FromRgb(0x99, 0x00, 0x00));
+
+                playPauseButton.Background = (Brush)new BrushConverter().ConvertFromString("#009900");
+                playPauseButton.MouseEnter += (s, ev) => playPauseButton_MouseEnter(s, ev, "#00bb00");
+                playPauseButton.MouseLeave += (s, ev) => playPauseButton_MouseEnter(s, ev, "#009900");
+                playPauseButton.ToolTip = "Click to resume the sender";
             }
+        }
+
+        private void playPauseButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e, string value)
+        {
+            playPauseButton.Background = (Brush)new BrushConverter().ConvertFromString(value); // set the background color to red
         }
     }
 }
