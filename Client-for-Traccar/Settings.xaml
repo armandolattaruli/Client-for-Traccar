@@ -43,7 +43,7 @@
                    Content="Server address" 
                    Foreground="#dddddd" 
                    FontSize="17" 
-                   Margin="37,79,361,284"
+                   Margin="37,84,361,279"
                    FontFamily="Cascadia Code"
                    HorizontalContentAlignment="Left"
                    VerticalContentAlignment="Center"/>
@@ -76,17 +76,17 @@
                 Content="Update rate" 
                 Foreground="#dddddd" 
                 FontSize="17" 
-                Margin="37,164,361,199"
+                Margin="37,159,361,204"
                 FontFamily="Cascadia Code"
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
 
             <TextBox x:Name="connectionTimeOut" 
-                Margin="37,199,136,164"
+                Margin="37,194,136,169"
                 Style="{StaticResource NormalTextBox}"/>
 
             <Button x:Name="saveConnectionTimeOut"
-                Margin="469,199,31,164"                     
+                Margin="469,194,31,169"                     
                 Click="saveConnectionTimeOut_click" Cursor="Hand">
 
                 <Button.Style>
@@ -105,6 +105,21 @@
                     Height="25"/>
 
             </Button>
+
+            <Menu x:Name="devicesMenu"
+                  Background="{DynamicResource SecondaryBlue}"
+                  Style="{StaticResource generalMenu}" Margin="37,276,31,28">
+
+                <MenuItem Style="{StaticResource generalMenuItem}" Header="ciao"/>
+            </Menu>
+            <Label x:Name="DeviceSelectionLabel" 
+                Content="Select device (or add a new one)" 
+                Foreground="#dddddd" 
+                FontSize="17" 
+                Margin="37,234,228,129"
+                FontFamily="Cascadia Code"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
         </Grid>
     </Border>
 </Window>
