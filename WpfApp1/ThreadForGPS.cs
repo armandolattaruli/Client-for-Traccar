@@ -34,9 +34,13 @@ namespace Client_for_Traccar
                             mainWindow.textForLatitude.Text = GeoFinder.getLatitude();
                             mainWindow.textForLongitude.Text = GeoFinder.getLongitude();
                             mainWindow.dateUpdate.Text = DateTime.Now.ToString();
+
+                            //mainWindow.threadIsRunning.Visibility = Visibility.Visible;
+                            //mainWindow.threadSuspended.Visibility = Visibility.Hidden;
                         });
 
                         Thread.Sleep(Properties.Settings.Default.connectionTimeOut * 1000);
+                        Console.WriteLine("Thread being executed...");
                     }
                     else
                     {
@@ -51,20 +55,23 @@ namespace Client_for_Traccar
         public static void Pause()
         {
             isPaused = true;
-            MessageBox.Show("Service paused");
             Console.WriteLine("Service paused");
         }
 
         public static void Resume()
         {
             isPaused = false;
-            MessageBox.Show("Service restarted");
             Console.WriteLine("Service restarted");
         }
 
         public static Boolean getIsPaused()
         {
             return isPaused;
+        }
+
+        public static void killThread()
+        {
+            thread.Abort();
         }
     }
 }

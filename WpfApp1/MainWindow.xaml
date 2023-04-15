@@ -37,6 +37,27 @@
                     Grid.ColumnSpan="2">
             </TextBlock>
 
+            <Label x:Name="threadSuspended" 
+                   Content="GPS paused!" 
+                   Margin="10,66,10,-33" 
+                   Foreground="#ee0000" 
+                   FontFamily="Cascadia Code" 
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   FontSize="16"
+                   Visibility="Hidden"
+                   Grid.Column="1"/>
+
+            <Label x:Name="threadIsRunning" 
+                   Content="Service is running" 
+                   Margin="10,66,10,-33" 
+                   Foreground="#00bb00" 
+                   FontFamily="Cascadia Code" 
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   FontSize="16"
+                   Visibility="Hidden"
+                   Grid.Column="1"/>
 
             <Button x:Name="manualLocalize"
                     Margin="65,126,65,-124" Cursor="Hand"

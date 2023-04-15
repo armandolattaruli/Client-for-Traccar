@@ -57,6 +57,7 @@ namespace Client_for_Traccar
                 exitMenuItem.Click += (s2, e2) =>
                 {
                     // Codice per uscire dall'applicazione
+                    ThreadForGPS.killThread();
                     System.Windows.Application.Current.Shutdown();
                 };
                 menu.Items.Add(showMenuItem);
@@ -101,11 +102,6 @@ namespace Client_for_Traccar
             win2.Show();
         }
 
-        private void killSender(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void newBackgroundTask(object sender, RoutedEventArgs e)
         {
             if (ThreadForGPS.getIsPaused())
@@ -115,19 +111,18 @@ namespace Client_for_Traccar
                 //
 
                 //sets background color based on "mouseOver"
-                playPauseButton.Background = Brushes.DarkRed;
-                playPauseButton.MouseLeave += (s, ev) => playPauseButton_MouseEnter(s, ev, Brushes.DarkRed.ToString());
-                playPauseButton.MouseEnter += (s, ev) => playPauseButton_MouseEnter(s, ev, "#bb0000");
+                playPauseButton.Background = (Brush)new BrushConverter().ConvertFromString("#009900");
+                playPauseButton.MouseEnter += (s, ev) => playPauseButton_MouseEnter(s, ev, "#00bb00");
+                playPauseButton.MouseLeave += (s, ev) => playPauseButton_MouseEnter(s, ev, "#009900");
                 playPauseButton.ToolTip = "Click to pause the sender";
-
             }
             else
             {
                 ThreadForGPS.Pause();
 
-                playPauseButton.Background = (Brush)new BrushConverter().ConvertFromString("#009900");
-                playPauseButton.MouseEnter += (s, ev) => playPauseButton_MouseEnter(s, ev, "#00bb00");
-                playPauseButton.MouseLeave += (s, ev) => playPauseButton_MouseEnter(s, ev, "#009900");
+                playPauseButton.Background = Brushes.DarkRed;
+                playPauseButton.MouseLeave += (s, ev) => playPauseButton_MouseEnter(s, ev, Brushes.DarkRed.ToString());
+                playPauseButton.MouseEnter += (s, ev) => playPauseButton_MouseEnter(s, ev, "#bb0000");
                 playPauseButton.ToolTip = "Click to resume the sender";
             }
         }
