@@ -93,16 +93,6 @@ namespace Client_for_Traccar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon icon1 {
-            get {
-                object obj = ResourceManager.GetObject("icon1", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
         internal static System.Drawing.Icon iconForSysTray {
             get {
                 object obj = ResourceManager.GetObject("iconForSysTray", resourceCulture);
@@ -126,6 +116,16 @@ namespace Client_for_Traccar.Properties {
         internal static System.Drawing.Icon onlyPause {
             get {
                 object obj = ResourceManager.GetObject("onlyPause", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon onlyPause1 {
+            get {
+                object obj = ResourceManager.GetObject("onlyPause1", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

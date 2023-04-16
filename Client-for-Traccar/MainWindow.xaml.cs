@@ -31,7 +31,7 @@ namespace Client_for_Traccar
         public void createSysTray()
         {
             _notifyIcon = new NotifyIcon();
-            _notifyIcon.Icon = new System.Drawing.Icon(Properties.Resources.icon1, 100, 100);
+            _notifyIcon.Icon = new System.Drawing.Icon(Properties.Resources.iconForSysTray, 100, 100);
             _notifyIcon.Visible = true;
             _notifyIcon.DoubleClick += (s, args) => Show();
             _notifyIcon.ShowBalloonTip(2, "Traccar Client for Windows", "Traccar Client is currently running", ToolTipIcon.Info);
