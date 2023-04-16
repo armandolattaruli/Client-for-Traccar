@@ -86,7 +86,7 @@
 
 
     <Style TargetType="{x:Type TextBox}" x:Key="NormalTextBox">
-        <Setter Property="Background" Value="{DynamicResource PrimaryWhite}"/>
+        <Setter Property="Background" Value="{DynamicResource SecondaryWhite}"/>
         <Setter Property="Text" Value=""/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
