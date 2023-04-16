@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client_for_Traccar"
         mc:Ignorable="d"
-        Title="Traccar Client" Height="504" Width="600"
+        Title="Traccar Client" Height="565" Width="600"
         AllowsTransparency="True"
         WindowStyle="None" ResizeMode="NoResize" 
         Background="{x:Null}" MouseDown="Window_MouseDown" 
@@ -76,17 +76,17 @@
                 Content="Update rate" 
                 Foreground="#dddddd" 
                 FontSize="17" 
-                Margin="37,156,361,404"
+                Margin="34,164,364,396"
                 FontFamily="Cascadia Code"
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
 
             <TextBox x:Name="connectionTimeOut" 
-                Margin="37,194,136,362"
+                Margin="34,202,139,354"
                 Style="{StaticResource NormalTextBox}"/>
 
             <Button x:Name="saveConnectionTimeOut"
-                Margin="469,194,31,362"                     
+                Margin="469,202,31,354"                     
                 Click="saveConnectionTimeOut_click" Cursor="Hand">
 
                 <Button.Style>
@@ -106,9 +106,20 @@
 
             </Button>
 
+            <!-- DEVICE LIST LABEL-->
+            <Label x:Name="DeviceSelectionLabel" 
+                Content="Select device (or add a new one)" 
+                Foreground="#dddddd" 
+                FontSize="17" 
+                Margin="34,269,231,299"
+                FontFamily="Cascadia Code"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
+
+            <!-- DEVICE LIST -->
             <ComboBox x:Name="devicesMenu"
                   Background="#444444"
-                  Style="{StaticResource generalMenu}" Margin="37,271,31,178">
+                  Style="{StaticResource generalMenu}" Margin="34,304,34,145">
 
                 <ComboBoxItem Style="{StaticResource generalMenuItem}">
                     <RadioButton Content="pippo" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
@@ -127,18 +138,13 @@
                 </ComboBoxItem>
             </ComboBox>
 
-            <Label x:Name="DeviceSelectionLabel" 
-                Content="Select device (or add a new one)" 
-                Foreground="#dddddd" 
-                FontSize="17" 
-                Margin="37,241,228,327"
-                FontFamily="Cascadia Code"
-                HorizontalContentAlignment="Left"
-                VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
+            <TextBox x:Name="addDeviceName" 
+                Margin="34,467,139,89"
+                Style="{StaticResource NormalTextBox}"/>
 
-
+            <!-- ADD ITEM BUTTON -->
             <Button x:Name="saveConnectionTimeOut_Copy"
-                Margin="248,435,252,0"                     
+                Margin="466,467,34,0"                     
                 Click="saveConnectionTimeOut_click" Cursor="Hand" Height="42" VerticalAlignment="Top">
 
                 <Button.Style>
