@@ -29,6 +29,7 @@ namespace Client_for_Traccar
             if (result == MessageBoxResult.OK)
             {
                 Properties.Settings.Default.serverLink = serverAddressName.Text;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -53,6 +54,8 @@ namespace Client_for_Traccar
 
                 int.TryParse(connectionTimeOut.Text, out conversionValue);
                 Properties.Settings.Default.connectionTimeOut = conversionValue;
+
+                Properties.Settings.Default.Save();
             }
         }
     }
