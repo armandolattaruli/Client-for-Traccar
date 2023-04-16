@@ -22,7 +22,6 @@ namespace Client_for_Traccar
                 {
                     if (!isPaused)
                     {
-                        // qui inserisci il codice che vuoi eseguire ogni intervalInSeconds secondi
                         Client_for_Traccar.GeoFinder.findPosition();
                         GeoFinder.magicClient();
 

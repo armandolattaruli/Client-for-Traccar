@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client_for_Traccar"
         mc:Ignorable="d"
-        Title="Traccar Client" Height="504" Width="600"
+        Title="Traccar Client" Height="565" Width="600"
         AllowsTransparency="True"
         WindowStyle="None" ResizeMode="NoResize" 
         Background="{x:Null}" MouseDown="Window_MouseDown" 
@@ -14,13 +14,13 @@
 
     <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919">
         <Grid HorizontalAlignment="Left" Width="600" Height="598" VerticalAlignment="Top">
-            <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,519" CornerRadius="20"/>
+            <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,525" CornerRadius="20"/>
 
             <!-- CLOSING BUTTON -->
             <Button x:Name="CloseButtonSettings" 
                     Click="MaincloseWindowPersonalized"
                     Style="{StaticResource CloseButton}"
-                    Margin="550,20,10,538" 
+                    Margin="550,16,10,542" 
                     Width="40" 
                     Height="40" 
                     Cursor="Hand" 
@@ -35,9 +35,9 @@
                    FontSize="20" 
                    FontWeight="Bold" 
                    FontFamily="Cascadia Code" 
-                   Margin="10,12,450,538"
+                   Margin="0,0,450,538"
                    VerticalContentAlignment="Center"
-                   HorizontalContentAlignment="Center"/>
+                   HorizontalContentAlignment="Center" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="140"/>
 
             <Label x:Name="labelServerAddress" 
                    Content="Server address" 
@@ -50,6 +50,7 @@
 
             <TextBox x:Name="serverAddressName" 
                      Margin="37,119,136,439"
+                     Text="youripAddress:andPortNumber"
                      Style="{StaticResource NormalTextBox}"/>
 
             <Button x:Name="saveServerAddress"
@@ -62,10 +63,10 @@
 
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource CloseButton}">
-                        <Setter Property="Background" Value="#009900"/>
+                        <Setter Property="Background" Value="{DynamicResource SecondaryGreen}"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#00aa00"/>
+                                <Setter Property="Background" Value="{DynamicResource PrimaryGreen}"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -76,25 +77,26 @@
                 Content="Update rate" 
                 Foreground="#dddddd" 
                 FontSize="17" 
-                Margin="37,156,361,404"
+                Margin="34,164,364,396"
                 FontFamily="Cascadia Code"
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
 
             <TextBox x:Name="connectionTimeOut" 
-                Margin="37,194,136,362"
+                Margin="34,202,139,354"
+                Text="Specify the number of seconds"
                 Style="{StaticResource NormalTextBox}"/>
 
             <Button x:Name="saveConnectionTimeOut"
-                Margin="469,194,31,362"                     
+                Margin="469,202,31,354"                     
                 Click="saveConnectionTimeOut_click" Cursor="Hand">
 
                 <Button.Style>
                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
-                        <Setter Property="Background" Value="#009900"/>
+                        <Setter Property="Background" Value="{DynamicResource SecondaryGreen}"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#00aa00"/>
+                                <Setter Property="Background" Value="{DynamicResource PrimaryGreen}"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -106,53 +108,68 @@
 
             </Button>
 
-            <ComboBox x:Name="devicesMenu"
-                  Background="#444444"
-                  Style="{StaticResource generalMenu}" Margin="37,271,31,178">
-
-                <ComboBoxItem Style="{StaticResource generalMenuItem}">
-                    <RadioButton Content="pippo" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
-                </ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource generalMenuItem}">
-                    <RadioButton Content="ciao" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
-                </ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource generalMenuItem}">
-                    <RadioButton Content="fac" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
-                </ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource generalMenuItem}">
-                    <RadioButton Content="asd" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
-                </ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource generalMenuItem}">
-                    <RadioButton Content="basd" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
-                </ComboBoxItem>
-            </ComboBox>
-
+            <!-- DEVICE LIST LABEL-->
             <Label x:Name="DeviceSelectionLabel" 
                 Content="Select device (or add a new one)" 
                 Foreground="#dddddd" 
                 FontSize="17" 
-                Margin="37,241,228,327"
+                Margin="34,269,231,299"
                 FontFamily="Cascadia Code"
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
 
+            <!-- DEVICE LIST -->
+            <ComboBox x:Name="devicesMenu"
+                  Background="#444444"
+                  Style="{StaticResource generalMenu}" Margin="34,304,34,145">
 
-            <Button x:Name="saveConnectionTimeOut_Copy"
-                Margin="248,435,252,0"                     
-                Click="saveConnectionTimeOut_click" Cursor="Hand" Height="42" VerticalAlignment="Top">
+                <!--<ComboBoxItem Style="{StaticResource generalMenuItem}">
+                    <RadioButton Content="pippo" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
+                </ComboBoxItem>-->
+
+            </ComboBox>
+
+            <TextBox x:Name="addDeviceName_textBox" 
+                Margin="34,467,254,89"
+                Style="{StaticResource NormalTextBox}"/>
+
+            <!-- ADD ITEM BUTTON -->
+            <Button x:Name="addDeviceButton"
+                Margin="351,467,149,0"                     
+                Click="addDeviceButton_click" Cursor="Hand" Height="42" VerticalAlignment="Top">
 
                 <Button.Style>
                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
-                        <Setter Property="Background" Value="#009900"/>
+                        <Setter Property="Background" Value="{DynamicResource SecondaryBlue}"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#00aa00"/>
+                                <Setter Property="Background" Value="{DynamicResource PrimaryBlue}"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
 
                 <Image Source="/assets/plus.png" 
+                    Width="25" 
+                    Height="25"/>
+
+            </Button>
+            <Button x:Name="saveConnectionTimeOut_Copy"
+                Margin="456,467,44,89"                     
+                Click="deleteDevices" Cursor="Hand" ToolTip="Delete all devices. WARNING: this will stop the service!">
+
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
+                        <Setter Property="Background" Value="DarkRed"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#aa0000"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Image Source="/assets/trash-can.png" 
                     Width="25" 
                     Height="25"/>
 

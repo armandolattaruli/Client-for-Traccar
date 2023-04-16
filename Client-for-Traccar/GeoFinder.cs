@@ -5,16 +5,33 @@ using System.Management;
 using System.IO;
 using System.Windows.Forms;
 using System.Windows;
+using System.Net.NetworkInformation;
 
 namespace Client_for_Traccar
 {
     public class GeoFinder
     {
         //userName,
-        private static string time, velocity, bearing, alti, precision, batt;
+        private static string userName, time, velocity, bearing, alti, precision, batt;
         private static string latitude, longitude;
 
         //finds the position by using the GPS
+        public static Boolean variousChecks()
+        {
+            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
+
+            // Avviare il monitoraggio della posizione
+            bool isPositionOK = watcher.TryStart(true, TimeSpan.FromSeconds(1));
+            bool isNetworkOK = NetworkInterface.GetIsNetworkAvailable();
+
+            if (isNetworkOK && isNetworkOK)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public static void findPosition()
         {
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
@@ -30,7 +47,7 @@ namespace Client_for_Traccar
 
             GeoCoordinate coord = watcher.Position.Location;
 
-            //userName = "henlociao";
+            userName = Properties.Settings.Default.defaultDeviceName;
             var Timestamp = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
             time = Timestamp.ToString();
 
@@ -51,12 +68,6 @@ namespace Client_for_Traccar
             media = (vertical + horizontal) / 2;
 
             precision = media.ToString();
-            //}
-            //else
-            //{
-            //    //System.Windows.MessageBox.Show("Unable to access GPS device. Please, make sure to enable it and to give permission to this application.", "GPS error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    System.Windows.MessageBox.Show(watcher.Status.ToString());
-            //}
         }
 
         //reads the address which hosts the Traccar server, from file
@@ -66,25 +77,37 @@ namespace Client_for_Traccar
         }
 
         //composes the string and send it to the server
-        public static string magicClient()
+        public static void magicClient()
         {
-            WebClient client = new WebClient();
-
-            //finds battery percentage, if available
-            ManagementObjectSearcher mos = new ManagementObjectSearcher("select * from Win32_Battery");
-
-            foreach (ManagementObject mo in mos.Get())
+            if (variousChecks())
             {
-                batt = mo["EstimatedChargeRemaining"].ToString();
+                WebClient client = new WebClient();
+
+                //finds battery percentage, if available
+                ManagementObjectSearcher mos = new ManagementObjectSearcher("select * from Win32_Battery");
+
+                foreach (ManagementObject mo in mos.Get())
+                {
+                    batt = mo["EstimatedChargeRemaining"].ToString();
+                }
+
+                string entireString = "/?id=" + userName + "&timestamp=" + time
+                    + "&lat=" + latitude + "&lon=" + longitude + "&speed="
+                    + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=2000.0";
+                string URI = readLink() + entireString;
+
+                //System.Windows.MessageBox.Show(URI);            
+
+                try
+                {
+                    client.UploadString(URI, entireString);
+                }
+                catch (Exception ex)
+                {
+                    // Codice che gestisce l'eccezione
+                    System.Windows.MessageBox.Show("Something went wrong: make sure to use a correct name for device!" + ex.Message);
+                }
             }
-
-            string entireString = "/?id=" + "deadboo00000k_02" + "&timestamp=" + time
-                + "&lat=" + latitude + "&lon=" + longitude + "&speed="
-                + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=2000.0";
-            string URI = readLink() + entireString;
-
-            client.UploadString(URI, entireString);
-            return URI;
         }
 
         public static string getLatitude()
