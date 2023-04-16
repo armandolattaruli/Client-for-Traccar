@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Forms;
 using ContextMenu = System.Windows.Forms.ContextMenu;
-using MenuItem = System.Windows.Forms.MenuItem;
-using System.Windows.Controls;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Threading.Tasks;
-using System.Security.Permissions;
+using System.Net.NetworkInformation;
 
 namespace Client_for_Traccar
 {
@@ -20,13 +15,17 @@ namespace Client_for_Traccar
 
         public MainWindow()
         {
-            createSysTray();
-            InitializeComponent();
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            if (Properties.Settings.Default.defaultDeviceName != "defaultWrong"
+                && NetworkInterface.GetIsNetworkAvailable())
+            {
+                createSysTray();
+                InitializeComponent();
+                this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            //passing this window as parameter.
-            //This is done in order to change the GPS data and update time in this window
-            ThreadForGPS.Start(this);
+                //passing this window as parameter.
+                //This is done in order to change the GPS data and update time in this window
+                //ThreadForGPS.Start(this);
+            }
         }
 
         public void createSysTray()
@@ -45,14 +44,14 @@ namespace Client_for_Traccar
                 var showMenuItem = new System.Windows.Controls.MenuItem();
                 var exitMenuItem = new System.Windows.Controls.MenuItem();
 
-                showMenuItem.Header = "Mostra finestra";
+                showMenuItem.Header = "Show window";
                 showMenuItem.Click += (s2, e2) =>
                 {
                     // Codice per mostrare la finestra dell'applicazione
                     this.Show();
                     this.WindowState = WindowState.Normal;
                 };
-                exitMenuItem.Header = "Esci";
+                exitMenuItem.Header = "Quit";
                 exitMenuItem.Click += (s2, e2) =>
                 {
                     // Codice per uscire dall'applicazione
@@ -83,6 +82,8 @@ namespace Client_for_Traccar
             textForLatitude.Text = GeoFinder.getLatitude();
             textForLongitude.Text = GeoFinder.getLongitude();
             dateUpdate.Text = DateTime.Now.ToString();
+
+            ThreadForGPS.Start(this);
 
             return;
         }

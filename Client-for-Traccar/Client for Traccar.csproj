@@ -230,5 +230,8 @@
   <ItemGroup>
     <None Include="assets\onlyPause.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\trash-can.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

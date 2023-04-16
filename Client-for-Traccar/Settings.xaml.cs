@@ -108,25 +108,28 @@ namespace Client_for_Traccar
 
         public void loadDevices()
         {
-            foreach (string value in Properties.Settings.Default.devicesListRes)
+            if (Properties.Settings.Default.devicesListRes.ToString() != "defaultValue")
             {
-                string newItem = value;
-                RadioButton newRadioButton = new RadioButton();
-                newRadioButton.Style = (Style)Application.Current.FindResource("radioButtonDevice");
-                newRadioButton.Content = newItem;
-                newRadioButton.GroupName = "devicesRadios";
-                newRadioButton.Click += RadioButton_Checked;
-
-                ComboBoxItem newItemComboBox = new ComboBoxItem();
-                newItemComboBox.Style = (Style)Application.Current.FindResource("generalMenuItem");
-                newItemComboBox.Content = newRadioButton;
-
-                if (value == Properties.Settings.Default.defaultDeviceName || Properties.Settings.Default.defaultDeviceName == "defaultWrong")
+                foreach (string value in Properties.Settings.Default.devicesListRes)
                 {
-                    newRadioButton.IsChecked = true;
-                }
+                    string newItem = value;
+                    RadioButton newRadioButton = new RadioButton();
+                    newRadioButton.Style = (Style)Application.Current.FindResource("radioButtonDevice");
+                    newRadioButton.Content = newItem;
+                    newRadioButton.GroupName = "devicesRadios";
+                    newRadioButton.Click += RadioButton_Checked;
 
-                devicesMenu.Items.Add(newItemComboBox);
+                    ComboBoxItem newItemComboBox = new ComboBoxItem();
+                    newItemComboBox.Style = (Style)Application.Current.FindResource("generalMenuItem");
+                    newItemComboBox.Content = newRadioButton;
+
+                    if (value == Properties.Settings.Default.defaultDeviceName || Properties.Settings.Default.defaultDeviceName == "defaultWrong")
+                    {
+                        newRadioButton.IsChecked = true;
+                    }
+
+                    devicesMenu.Items.Add(newItemComboBox);
+                }
             }
         }
 
@@ -142,6 +145,18 @@ namespace Client_for_Traccar
                 Properties.Settings.Default.defaultDeviceName = selectedValue;
                 Properties.Settings.Default.Save();
                 MessageBox.Show("New value for defaultDeviceName is: " + Properties.Settings.Default.defaultDeviceName);
+            }
+        }
+
+        private void deleteDevices(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.devicesListRes.Clear();
+            for (int i = devicesMenu.Items.Count - 1; i >= 0; i--)
+            {
+                if (devicesMenu.Items[i] is ComboBoxItem)
+                {
+                    devicesMenu.Items.RemoveAt(i);
+                }
             }
         }
     }

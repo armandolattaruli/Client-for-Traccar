@@ -130,12 +130,12 @@
             </ComboBox>
 
             <TextBox x:Name="addDeviceName_textBox" 
-                Margin="34,467,139,89"
+                Margin="34,467,254,89"
                 Style="{StaticResource NormalTextBox}"/>
 
             <!-- ADD ITEM BUTTON -->
             <Button x:Name="addDeviceButton"
-                Margin="466,467,34,0"                     
+                Margin="351,467,149,0"                     
                 Click="addDeviceButton_click" Cursor="Hand" Height="42" VerticalAlignment="Top">
 
                 <Button.Style>
@@ -150,6 +150,26 @@
                 </Button.Style>
 
                 <Image Source="/assets/plus.png" 
+                    Width="25" 
+                    Height="25"/>
+
+            </Button>
+            <Button x:Name="saveConnectionTimeOut_Copy"
+                Margin="456,467,44,89"                     
+                Click="deleteDevices" Cursor="Hand" ToolTip="Delete all devices. WARNING: this will stop the service!">
+
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
+                        <Setter Property="Background" Value="DarkRed"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#aa0000"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Image Source="/assets/trash-can.png" 
                     Width="25" 
                     Height="25"/>
 
