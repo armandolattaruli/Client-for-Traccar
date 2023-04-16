@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client_for_Traccar"
         mc:Ignorable="d"
-        Title="Traccar Client" Height="400" Width="600"
+        Title="Traccar Client" Height="504" Width="600"
         AllowsTransparency="True"
         WindowStyle="None" ResizeMode="NoResize" 
         Background="{x:Null}" MouseDown="Window_MouseDown" 
@@ -13,14 +13,14 @@
         >
 
     <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919">
-        <Grid HorizontalAlignment="Left" Width="600" Margin="0,0,0,0">
-            <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,324" CornerRadius="20"/>
+        <Grid HorizontalAlignment="Left" Width="600" Height="598" VerticalAlignment="Top">
+            <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,519" CornerRadius="20"/>
 
             <!-- CLOSING BUTTON -->
             <Button x:Name="CloseButtonSettings" 
                     Click="MaincloseWindowPersonalized"
                     Style="{StaticResource CloseButton}"
-                    Margin="536,17,24,341" 
+                    Margin="550,20,10,538" 
                     Width="40" 
                     Height="40" 
                     Cursor="Hand" 
@@ -35,7 +35,7 @@
                    FontSize="20" 
                    FontWeight="Bold" 
                    FontFamily="Cascadia Code" 
-                   Margin="10,12,450,336"
+                   Margin="10,12,450,538"
                    VerticalContentAlignment="Center"
                    HorizontalContentAlignment="Center"/>
 
@@ -43,17 +43,17 @@
                    Content="Server address" 
                    Foreground="#dddddd" 
                    FontSize="17" 
-                   Margin="37,79,361,284"
+                   Margin="37,84,361,479"
                    FontFamily="Cascadia Code"
                    HorizontalContentAlignment="Left"
                    VerticalContentAlignment="Center"/>
 
             <TextBox x:Name="serverAddressName" 
-                     Margin="37,119,136,244"
+                     Margin="37,119,136,439"
                      Style="{StaticResource NormalTextBox}"/>
 
             <Button x:Name="saveServerAddress"
-                    Margin="469,119,31,244"                     
+                    Margin="469,119,31,439"                     
                     Click="saveServerAddress_Click" Cursor="Hand">
 
                 <Image Source="/assets/diskette.png" 
@@ -76,17 +76,17 @@
                 Content="Update rate" 
                 Foreground="#dddddd" 
                 FontSize="17" 
-                Margin="37,164,361,199"
+                Margin="37,156,361,404"
                 FontFamily="Cascadia Code"
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
 
             <TextBox x:Name="connectionTimeOut" 
-                Margin="37,199,136,164"
+                Margin="37,194,136,362"
                 Style="{StaticResource NormalTextBox}"/>
 
             <Button x:Name="saveConnectionTimeOut"
-                Margin="469,199,31,164"                     
+                Margin="469,194,31,362"                     
                 Click="saveConnectionTimeOut_click" Cursor="Hand">
 
                 <Button.Style>
@@ -101,6 +101,58 @@
                 </Button.Style>
 
                 <Image Source="/assets/diskette.png" 
+                    Width="25" 
+                    Height="25"/>
+
+            </Button>
+
+            <ComboBox x:Name="devicesMenu"
+                  Background="#444444"
+                  Style="{StaticResource generalMenu}" Margin="37,271,31,178">
+
+                <ComboBoxItem Style="{StaticResource generalMenuItem}">
+                    <RadioButton Content="pippo" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
+                </ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource generalMenuItem}">
+                    <RadioButton Content="ciao" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
+                </ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource generalMenuItem}">
+                    <RadioButton Content="fac" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
+                </ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource generalMenuItem}">
+                    <RadioButton Content="asd" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
+                </ComboBoxItem>
+                <ComboBoxItem Style="{StaticResource generalMenuItem}">
+                    <RadioButton Content="basd" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
+                </ComboBoxItem>
+            </ComboBox>
+
+            <Label x:Name="DeviceSelectionLabel" 
+                Content="Select device (or add a new one)" 
+                Foreground="#dddddd" 
+                FontSize="17" 
+                Margin="37,241,228,327"
+                FontFamily="Cascadia Code"
+                HorizontalContentAlignment="Left"
+                VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
+
+
+            <Button x:Name="saveConnectionTimeOut_Copy"
+                Margin="248,435,252,0"                     
+                Click="saveConnectionTimeOut_click" Cursor="Hand" Height="42" VerticalAlignment="Top">
+
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
+                        <Setter Property="Background" Value="#009900"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#00aa00"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Image Source="/assets/plus.png" 
                     Width="25" 
                     Height="25"/>
 
