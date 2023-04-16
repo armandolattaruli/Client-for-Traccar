@@ -135,6 +135,8 @@
                 FontFamily="Cascadia Code"
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
+
+
             <Button x:Name="saveConnectionTimeOut_Copy"
                 Margin="248,435,252,0"                     
                 Click="saveConnectionTimeOut_click" Cursor="Hand" Height="42" VerticalAlignment="Top">
@@ -150,7 +152,7 @@
                     </Style>
                 </Button.Style>
 
-                <Image Source="/assets/diskette.png" 
+                <Image Source="/assets/plus.png" 
                     Width="25" 
                     Height="25"/>
 
