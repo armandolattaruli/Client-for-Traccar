@@ -4,11 +4,12 @@
     <!-- primary colors -->
     <SolidColorBrush x:Key="PrimaryBlue" Color="#FF2CB9F5"></SolidColorBrush>
     <SolidColorBrush x:Key="PrimaryWhite" Color="#dddddd"></SolidColorBrush>
-    <SolidColorBrush x:Key="PrimaryGreen" Color="#00bb66"></SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryGreen" Color="#00dd44"></SolidColorBrush>
 
     <!-- secondary colors -->
     <SolidColorBrush x:Key="SecondaryBlue" Color="#bb0875b1"></SolidColorBrush>
     <SolidColorBrush x:Key="SecondaryWhite" Color="#aaaaaa"></SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryGreen" Color="#008822"></SolidColorBrush>
     <SolidColorBrush x:Key="DarkGray" Color="#333333"></SolidColorBrush>
 
     <!-- general purpose button-->
