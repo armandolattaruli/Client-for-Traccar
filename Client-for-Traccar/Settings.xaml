@@ -50,6 +50,7 @@
 
             <TextBox x:Name="serverAddressName" 
                      Margin="37,119,136,439"
+                     Text="youripAddress:andPortNumber"
                      Style="{StaticResource NormalTextBox}"/>
 
             <Button x:Name="saveServerAddress"
@@ -83,6 +84,7 @@
 
             <TextBox x:Name="connectionTimeOut" 
                 Margin="34,202,139,354"
+                Text="Specify the number of seconds"
                 Style="{StaticResource NormalTextBox}"/>
 
             <Button x:Name="saveConnectionTimeOut"
