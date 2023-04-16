@@ -32,13 +32,19 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border Name="Border" Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Padding="{TemplateBinding Padding}"
                             CornerRadius="10">
                         <ContentPresenter/>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="#2f2f2f" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="#2f2f2f" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -50,8 +56,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <Grid>
-                        <Ellipse x:Name="RadioButtonEllipse"
+                    <Border Name="Border">
+                        <Grid>
+                            <Ellipse x:Name="RadioButtonEllipse"
                              Width="15"
                              Height="15"
                              Fill="#999999"
@@ -61,13 +68,15 @@
                               HorizontalAlignment="Left"
                              Margin="0,0,5,0"/>
 
-                        <ContentPresenter x:Name="RadioButtonContentPresenter"
+                            <ContentPresenter x:Name="RadioButtonContentPresenter"
                                       VerticalAlignment="Center"
                                       HorizontalAlignment="Left"
                                       Margin="30,0,0,0"
                                       Content="{TemplateBinding Content}"
                                       ContentTemplate="{TemplateBinding ContentTemplate}"/>
-                    </Grid>
+                        </Grid>
+                    </Border>
+
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="RadioButtonEllipse" Property="Fill" Value="#FF2CB9F5"/>

@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System;
 
 namespace Client_for_Traccar
 {
@@ -13,6 +14,8 @@ namespace Client_for_Traccar
         {
             InitializeComponent();
             loadLinkServer();
+            loadConnectionTime();
+            loadDevices();
         }
 
         //load the saved server in the input box
@@ -68,22 +71,77 @@ namespace Client_for_Traccar
             // Apri una finestra di dialogo per chiedere all'utente di inserire un nuovo elemento
             string newItem = addDeviceName_textBox.Text;
             RadioButton newRadioButton = new RadioButton();
+            newRadioButton.Style = (Style)Application.Current.FindResource("radioButtonDevice");
             newRadioButton.Content = newItem;
-            devicesMenu.Items.Add(newRadioButton);
+            newRadioButton.GroupName = "devicesRadios";
+
 
             if (!string.IsNullOrWhiteSpace(newItem))
             {
-                // Aggiungi il nuovo elemento alla ComboBox
-                devicesMenu.Items.Add(newItem);
+                // Create new ItemComboBox
+                ComboBoxItem newItemComboBox = new ComboBoxItem();
+                newItemComboBox.Style = (Style)Application.Current.FindResource("generalMenuItem"); //applying style
+                newItemComboBox.Content = newRadioButton;
+                newRadioButton.Click += RadioButton_Checked; //adding click event
 
-                // Salva la lista di elementi nelle impostazioni dell'utente
+                // Adding the previous element to the list
+                devicesMenu.Items.Add(newItemComboBox);
+
+                // Save the list into user settings
                 StringCollection comboBoxItems = new StringCollection();
-                foreach (RadioButton radioButton in devicesMenu.Items)
+                foreach (var item in devicesMenu.Items)
                 {
-                    comboBoxItems.Add(radioButton.Content.ToString());
+                    if (item is ComboBoxItem comboBoxItem)
+                    {
+                        RadioButton radioButton = comboBoxItem.Content as RadioButton;
+                        if (radioButton != null)
+                        {
+                            comboBoxItems.Add(radioButton.Content.ToString());
+                            Console.WriteLine("Adding radio button: " + radioButton.Content.ToString());
+                        }
+                    }
                 }
                 Properties.Settings.Default.devicesListRes = comboBoxItems;
                 Properties.Settings.Default.Save();
+            }
+        }
+
+        public void loadDevices()
+        {
+            foreach (string value in Properties.Settings.Default.devicesListRes)
+            {
+                string newItem = value;
+                RadioButton newRadioButton = new RadioButton();
+                newRadioButton.Style = (Style)Application.Current.FindResource("radioButtonDevice");
+                newRadioButton.Content = newItem;
+                newRadioButton.GroupName = "devicesRadios";
+                newRadioButton.Click += RadioButton_Checked;
+
+                ComboBoxItem newItemComboBox = new ComboBoxItem();
+                newItemComboBox.Style = (Style)Application.Current.FindResource("generalMenuItem");
+                newItemComboBox.Content = newRadioButton;
+
+                if (value == Properties.Settings.Default.defaultDeviceName || Properties.Settings.Default.defaultDeviceName == "defaultWrong")
+                {
+                    newRadioButton.IsChecked = true;
+                }
+
+                devicesMenu.Items.Add(newItemComboBox);
+            }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            if (radioButton != null)
+            {
+                // Get the value of selected button
+                string selectedValue = radioButton.Content.ToString();
+
+                // Save value in user settings
+                Properties.Settings.Default.defaultDeviceName = selectedValue;
+                Properties.Settings.Default.Save();
+                MessageBox.Show("New value for defaultDeviceName is: " + Properties.Settings.Default.defaultDeviceName);
             }
         }
     }

@@ -126,14 +126,7 @@
                 <!--<ComboBoxItem Style="{StaticResource generalMenuItem}">
                     <RadioButton Content="pippo" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
                 </ComboBoxItem>-->
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <RadioButton GroupName="MyGroup" />
-                            <TextBlock Text="{Binding}" Margin="5,0,0,0" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
+
             </ComboBox>
 
             <TextBox x:Name="addDeviceName_textBox" 
