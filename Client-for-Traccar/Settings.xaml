@@ -14,13 +14,13 @@
 
     <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919">
         <Grid HorizontalAlignment="Left" Width="600" Height="598" VerticalAlignment="Top">
-            <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,519" CornerRadius="20"/>
+            <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,525" CornerRadius="20"/>
 
             <!-- CLOSING BUTTON -->
             <Button x:Name="CloseButtonSettings" 
                     Click="MaincloseWindowPersonalized"
                     Style="{StaticResource CloseButton}"
-                    Margin="550,20,10,538" 
+                    Margin="550,16,10,542" 
                     Width="40" 
                     Height="40" 
                     Cursor="Hand" 
@@ -35,9 +35,9 @@
                    FontSize="20" 
                    FontWeight="Bold" 
                    FontFamily="Cascadia Code" 
-                   Margin="10,12,450,538"
+                   Margin="0,0,450,538"
                    VerticalContentAlignment="Center"
-                   HorizontalContentAlignment="Center"/>
+                   HorizontalContentAlignment="Center" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="140"/>
 
             <Label x:Name="labelServerAddress" 
                    Content="Server address" 
@@ -143,10 +143,10 @@
 
                 <Button.Style>
                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
-                        <Setter Property="Background" Value="#009900"/>
+                        <Setter Property="Background" Value="{DynamicResource SecondaryBlue}"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#00aa00"/>
+                                <Setter Property="Background" Value="{DynamicResource PrimaryBlue}"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
