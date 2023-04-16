@@ -1,5 +1,9 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Linq;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace Client_for_Traccar
 {
@@ -55,6 +59,30 @@ namespace Client_for_Traccar
                 int.TryParse(connectionTimeOut.Text, out conversionValue);
                 Properties.Settings.Default.connectionTimeOut = conversionValue;
 
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void addDeviceButton_click(object sender, RoutedEventArgs e)
+        {
+            // Apri una finestra di dialogo per chiedere all'utente di inserire un nuovo elemento
+            string newItem = addDeviceName_textBox.Text;
+            RadioButton newRadioButton = new RadioButton();
+            newRadioButton.Content = newItem;
+            devicesMenu.Items.Add(newRadioButton);
+
+            if (!string.IsNullOrWhiteSpace(newItem))
+            {
+                // Aggiungi il nuovo elemento alla ComboBox
+                devicesMenu.Items.Add(newItem);
+
+                // Salva la lista di elementi nelle impostazioni dell'utente
+                StringCollection comboBoxItems = new StringCollection();
+                foreach (RadioButton radioButton in devicesMenu.Items)
+                {
+                    comboBoxItems.Add(radioButton.Content.ToString());
+                }
+                Properties.Settings.Default.devicesListRes = comboBoxItems;
                 Properties.Settings.Default.Save();
             }
         }

@@ -8,5 +8,8 @@
     <Setting Name="serverLink" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://demo3.traccar.org</Value>
     </Setting>
+    <Setting Name="devicesListRes" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

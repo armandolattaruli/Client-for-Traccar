@@ -123,31 +123,27 @@
                   Background="#444444"
                   Style="{StaticResource generalMenu}" Margin="34,304,34,145">
 
-                <ComboBoxItem Style="{StaticResource generalMenuItem}">
+                <!--<ComboBoxItem Style="{StaticResource generalMenuItem}">
                     <RadioButton Content="pippo" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
-                </ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource generalMenuItem}">
-                    <RadioButton Content="ciao" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
-                </ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource generalMenuItem}">
-                    <RadioButton Content="fac" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
-                </ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource generalMenuItem}">
-                    <RadioButton Content="asd" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
-                </ComboBoxItem>
-                <ComboBoxItem Style="{StaticResource generalMenuItem}">
-                    <RadioButton Content="basd" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
-                </ComboBoxItem>
+                </ComboBoxItem>-->
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton GroupName="MyGroup" />
+                            <TextBlock Text="{Binding}" Margin="5,0,0,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <TextBox x:Name="addDeviceName" 
+            <TextBox x:Name="addDeviceName_textBox" 
                 Margin="34,467,139,89"
                 Style="{StaticResource NormalTextBox}"/>
 
             <!-- ADD ITEM BUTTON -->
-            <Button x:Name="saveConnectionTimeOut_Copy"
+            <Button x:Name="addDeviceButton"
                 Margin="466,467,34,0"                     
-                Click="saveConnectionTimeOut_click" Cursor="Hand" Height="42" VerticalAlignment="Top">
+                Click="addDeviceButton_click" Cursor="Hand" Height="42" VerticalAlignment="Top">
 
                 <Button.Style>
                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
