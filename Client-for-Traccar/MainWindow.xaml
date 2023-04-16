@@ -28,12 +28,12 @@
                 v. 0.0.0
             </TextBlock>
 
-            <Image x:Name="appIcon" Source="/assets/icon.png" Margin="8,15,158,30" />
+            <Image x:Name="appIcon" Source="/assets/icon.png" Margin="7,10,141,19" />
 
             <TextBlock x:Name="windowTitle"
                     Text="Traccar client for Windows"
                     FontSize="21"
-                    Foreground="#dddddd" Margin="45,15,62,28"
+                    Foreground="#dddddd" Margin="66,17,41,26"
                     Grid.ColumnSpan="2">
             </TextBlock>
 
