@@ -15,17 +15,13 @@ namespace Client_for_Traccar
 
         public MainWindow()
         {
-            if (Properties.Settings.Default.defaultDeviceName != "defaultWrong"
-                && NetworkInterface.GetIsNetworkAvailable())
-            {
-                createSysTray();
-                InitializeComponent();
-                this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            createSysTray();
+            InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-                //passing this window as parameter.
-                //This is done in order to change the GPS data and update time in this window
-                //ThreadForGPS.Start(this);
-            }
+            //passing this window as parameter.
+            //This is done in order to change the GPS data and update time in this window
+            ThreadForGPS.Start(this);
         }
 
         public void createSysTray()
@@ -108,32 +104,25 @@ namespace Client_for_Traccar
 
         private void newBackgroundTask(object sender, RoutedEventArgs e)
         {
-            if (ThreadForGPS.getIsPaused())
-            {
-                ThreadForGPS.Resume();
-                //playPauseButton.Background = new SolidColorBrush(Color.FromRgb(0x00, 0x99, 0x00));
-                //
 
-                //sets background color based on "mouseOver"
-                playPauseButton.Background = (Brush)new BrushConverter().ConvertFromString("#009900");
-                playPauseButton.MouseEnter += (s, ev) => playPauseButton_MouseEnter(s, ev, "#00bb00");
-                playPauseButton.MouseLeave += (s, ev) => playPauseButton_MouseEnter(s, ev, "#009900");
-                playPauseButton.ToolTip = "Click to pause the sender";
-                modifySystray(Properties.Resources.iconForSysTray);
+            if (ThreadForGPS.doesItExist())
+            {
+                if (ThreadForGPS.getIsPaused())
+                {
+                    ThreadForGPS.Resume(this);
+                }
+                else
+                {
+                    ThreadForGPS.Pause(this);
+                }
             }
             else
             {
-                ThreadForGPS.Pause();
-
-                playPauseButton.Background = Brushes.DarkRed;
-                playPauseButton.MouseLeave += (s, ev) => playPauseButton_MouseEnter(s, ev, Brushes.DarkRed.ToString());
-                playPauseButton.MouseEnter += (s, ev) => playPauseButton_MouseEnter(s, ev, "#bb0000");
-                playPauseButton.ToolTip = "Click to resume the sender";
-                modifySystray(Properties.Resources.onlyPause);
+                ThreadForGPS.Start(this);
             }
         }
 
-        private void playPauseButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e, string value)
+        public void playPauseButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e, string value)
         {
             playPauseButton.Background = (Brush)new BrushConverter().ConvertFromString(value); // set the background color to red
         }
