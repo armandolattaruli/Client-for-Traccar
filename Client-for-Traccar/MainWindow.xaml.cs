@@ -5,6 +5,7 @@ using System.Windows.Media;
 using System.Windows.Forms;
 using ContextMenu = System.Windows.Forms.ContextMenu;
 using System.Net.NetworkInformation;
+using System.Drawing;
 
 namespace Client_for_Traccar
 {
@@ -27,7 +28,7 @@ namespace Client_for_Traccar
         public void createSysTray()
         {
             _notifyIcon = new NotifyIcon();
-            _notifyIcon.Icon = new System.Drawing.Icon(Properties.Resources.iconForSysTray, 100, 100);
+            _notifyIcon.Icon = new Icon(Properties.Resources.iconForSysTrayR, new System.Drawing.Size(16, 16));
             _notifyIcon.Visible = true;
             _notifyIcon.DoubleClick += (s, args) => Show();
             _notifyIcon.ShowBalloonTip(2, "Traccar Client for Windows", "Traccar Client is currently running", ToolTipIcon.Info);
@@ -124,7 +125,7 @@ namespace Client_for_Traccar
 
         public void playPauseButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e, string value)
         {
-            playPauseButton.Background = (Brush)new BrushConverter().ConvertFromString(value); // set the background color to red
+            playPauseButton.Background = (System.Windows.Media.Brush)new BrushConverter().ConvertFromString(value); // set the background color to red
         }
     }
 }

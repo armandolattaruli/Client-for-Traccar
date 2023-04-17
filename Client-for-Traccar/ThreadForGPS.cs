@@ -53,7 +53,7 @@ namespace Client_for_Traccar
                 mainWindow.playPauseButton.MouseEnter += (s, ev) => mainWindow.playPauseButton_MouseEnter(s, ev, "#00bb00");
                 mainWindow.playPauseButton.MouseLeave += (s, ev) => mainWindow.playPauseButton_MouseEnter(s, ev, "#009900");
                 mainWindow.playPauseButton.ToolTip = "Click to pause the sender";
-                mainWindow.modifySystray(Properties.Resources.iconForSysTray);
+                mainWindow.modifySystray(Properties.Resources.iconForSysTrayR);
 
                 mainWindow.threadIsRunning.Visibility = Visibility.Visible;
                 mainWindow.threadSuspended.Visibility = Visibility.Hidden;
