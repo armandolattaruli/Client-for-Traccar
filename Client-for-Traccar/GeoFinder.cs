@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Windows;
 using System.Net.NetworkInformation;
+using System.Windows.Media;
 
 namespace Client_for_Traccar
 {
@@ -77,7 +78,7 @@ namespace Client_for_Traccar
         }
 
         //composes the string and send it to the server
-        public static void magicClient()
+        public static void magicClient(MainWindow mainWindow2)
         {
             if (variousChecks())
             {
@@ -105,7 +106,11 @@ namespace Client_for_Traccar
                 catch (Exception ex)
                 {
                     // Codice che gestisce l'eccezione
-                    System.Windows.MessageBox.Show("Something went wrong: make sure to use a correct name for device!" + ex.Message);
+                    System.Windows.MessageBox.Show("Something went wrong: make sure to use a correct name for device!");
+                    ThreadForGPS.pauseStyleSetter(mainWindow2);
+                    ThreadForGPS.killThread();
+
+                    String s = ex.Message;
                 }
             }
         }

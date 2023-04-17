@@ -57,12 +57,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_11149A7DF2C4475A91EA192D5388D210"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_13C4D80FB9D2EDB507422DF6D6C091BC"
         "OwnerKey" = "8:_872CC9E4A0C74B36BEBCA688EF000AB9"
         "MsmSig" = "8:_UNDEFINED"
@@ -4191,6 +4185,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_CD121EF9B9E64499AB5712735F39F6F9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CD53A486AE809C7EE94076B9CE9DEEA0"
         "OwnerKey" = "8:_872CC9E4A0C74B36BEBCA688EF000AB9"
         "MsmSig" = "8:_UNDEFINED"
@@ -6520,26 +6520,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_11149A7DF2C4475A91EA192D5388D210"
-            {
-            "SourcePath" = "8:..\\Client-for-Traccar\\assets\\icon.ico"
-            "TargetName" = "8:icon.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_4A77568BC6424E29A29EE838AEF323A6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_13C4D80FB9D2EDB507422DF6D6C091BC"
@@ -11553,6 +11533,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD121EF9B9E64499AB5712735F39F6F9"
+            {
+            "SourcePath" = "8:..\\Client-for-Traccar\\assets\\icon.ico"
+            "TargetName" = "8:icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_4A77568BC6424E29A29EE838AEF323A6"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CD53A486AE809C7EE94076B9CE9DEEA0"
             {
             "AssemblyRegister" = "3:1"
@@ -12950,7 +12950,7 @@
             "Target" = "8:_872CC9E4A0C74B36BEBCA688EF000AB9"
             "Folder" = "8:_0A3211126C4A45BAB9DBBF11E5C0AFF7"
             "WorkingFolder" = "8:_4A77568BC6424E29A29EE838AEF323A6"
-            "Icon" = "8:_11149A7DF2C4475A91EA192D5388D210"
+            "Icon" = "8:_CD121EF9B9E64499AB5712735F39F6F9"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FBF266480A7442C3B7E61EDAA9DA5570"
@@ -12964,7 +12964,7 @@
             "Target" = "8:_872CC9E4A0C74B36BEBCA688EF000AB9"
             "Folder" = "8:_0FBAA2A5168A4A4DB2C5CB3DFCBAC43C"
             "WorkingFolder" = "8:_4A77568BC6424E29A29EE838AEF323A6"
-            "Icon" = "8:_11149A7DF2C4475A91EA192D5388D210"
+            "Icon" = "8:_CD121EF9B9E64499AB5712735F39F6F9"
             "Feature" = "8:"
             }
         }
