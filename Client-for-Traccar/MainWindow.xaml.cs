@@ -13,6 +13,8 @@ namespace Client_for_Traccar
         public NotifyIcon _notifyIcon;
         public ContextMenu _contextMenu;
         public double currentZoom = 16;
+        private System.Windows.Point _startPoint;
+        private Location _startLocation;
 
         public MainWindow()
         {
@@ -24,7 +26,10 @@ namespace Client_for_Traccar
             //This is done in order to change the GPS data and update time in this window
             ThreadForGPS.Start(this);
 
-            myMap.ZoomLevel = 12; // livello di zoom iniziale            
+            myMap.ZoomLevel = 12; // initial zoom level        
+            myMap.PreviewMouseLeftButtonDown += MyMap_PreviewMouseLeftButtonDown;
+            myMap.PreviewMouseMove += MyMap_PreviewMouseMove;
+            myMap.PreviewMouseLeftButtonUp += MyMap_PreviewMouseLeftButtonUp;
         }
 
         public void createSysTray()
@@ -112,9 +117,31 @@ namespace Client_for_Traccar
             playPauseButton.Background = (System.Windows.Media.Brush)new BrushConverter().ConvertFromString(value); // set the background color to red
         }
 
-        public void MyMap_ViewChangeEnd(object sender, MapEventArgs e)
+        private void MyMap_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            currentZoom = myMap.ZoomLevel;
+            _startPoint = e.GetPosition(this);
+            _startLocation = myMap.Center;
         }
+
+        private void MyMap_PreviewMouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (_startLocation != null && e.LeftButton == MouseButtonState.Pressed)
+            {
+                System.Windows.Point currentPoint = e.GetPosition(this);
+                Location currentLocation = myMap.ViewportPointToLocation(currentPoint);
+
+                double latitudeChange = currentLocation.Latitude - _startLocation.Latitude;
+                double longitudeChange = currentLocation.Longitude - _startLocation.Longitude;
+
+                myMap.Center = new Location(myMap.Center.Latitude - latitudeChange, myMap.Center.Longitude - longitudeChange);
+            }
+        }
+
+        private void MyMap_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            _startPoint = new System.Windows.Point();
+            _startLocation = null;
+        }
+
     }
 }

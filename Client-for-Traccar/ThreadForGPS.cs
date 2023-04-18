@@ -90,8 +90,6 @@ namespace Client_for_Traccar
 
                             Application.Current.Dispatcher.Invoke(() =>
                             {
-                                mainWindow.myMap.ViewChangeEnd += mainWindow.MyMap_ViewChangeEnd;
-
                                 mainWindow.myMap.SetView(pos, mainWindow.currentZoom);
 
                                 Pushpin pushpin = new Pushpin();

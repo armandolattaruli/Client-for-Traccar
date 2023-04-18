@@ -3,7 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"        
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"                
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="Traccar Client" Height="512" Width="600"
         AllowsTransparency="True"
@@ -31,8 +32,7 @@
                     <m:Map x:Name="myMap" CredentialsProvider="qtF1tbNC6DSy4noXuV0W~0F6LMMtcj578O71nXGOXAQ~Arm0KZUgxG3dOdteoNW4Eo5L7JZyNaA-P82FcEV3Vc7wMJ-zXDk04HgZaFzAOHQB" 
                             Mode="Aerial"
                            Margin="-89,-10,-314,-194"
-                           ScaleVisibility="Hidden"
-                           >
+                           ScaleVisibility="Hidden">
                     </m:Map>
                 </Grid>
             </Grid>
@@ -194,10 +194,7 @@
 
             <!-- SETTINGS BUTTON -->
             <Button x:Name="settingsButton"
-                    Margin="10,363,165,-313"
-                    Click="Button_Click"
-                    Height="25"
-                    Width="25">
+                    Click="Button_Click" Margin="10,454,156,-413" Width="34">
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource PictureButton}">
                         <Setter Property="Background" Value="Transparent" />
@@ -212,8 +209,8 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                <Image Source="assets/settings.png" Height="26" Width="26" />
             </Button>
-            <Image Source="assets/settings.png" Margin="10,464,166,-413" />
         </Grid>
     </Border>
 </Window>
