@@ -12,6 +12,7 @@ namespace Client_for_Traccar
     {
         public NotifyIcon _notifyIcon;
         public ContextMenu _contextMenu;
+        public double currentZoom = 16;
 
         public MainWindow()
         {
@@ -110,8 +111,6 @@ namespace Client_for_Traccar
         {
             playPauseButton.Background = (System.Windows.Media.Brush)new BrushConverter().ConvertFromString(value); // set the background color to red
         }
-
-        public double currentZoom;
 
         public void MyMap_ViewChangeEnd(object sender, MapEventArgs e)
         {
