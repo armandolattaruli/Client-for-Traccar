@@ -111,7 +111,7 @@ namespace Client_for_Traccar
             }
             else
             {
-                mainWindow.myMap.SetView(new Location(41.893525, 12.502999), 15);
+                mainWindow.myMap.SetView(new Location(41.8903875, 12.5019666), 15);
             }
         }
 

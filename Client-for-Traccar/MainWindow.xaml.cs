@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
@@ -26,7 +27,8 @@ namespace Client_for_Traccar
             //This is done in order to change the GPS data and update time in this window
             ThreadForGPS.Start(this);
 
-            myMap.ZoomLevel = 12; // initial zoom level        
+            myMap.SetView(new Location(41.890202, 12.492892), 15);
+            myMap.ZoomLevel = 15; // initial zoom level        
             myMap.PreviewMouseLeftButtonDown += MyMap_PreviewMouseLeftButtonDown;
             myMap.PreviewMouseMove += MyMap_PreviewMouseMove;
             myMap.PreviewMouseLeftButtonUp += MyMap_PreviewMouseLeftButtonUp;
@@ -140,8 +142,7 @@ namespace Client_for_Traccar
         private void MyMap_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             _startPoint = new System.Windows.Point();
-            _startLocation = null;
+            _startLocation = new Location(float.Parse(GeoFinder.getLatitude()), float.Parse(GeoFinder.getLongitude()));
         }
-
     }
 }

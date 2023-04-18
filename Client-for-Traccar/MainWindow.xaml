@@ -31,9 +31,9 @@
                 <Grid Margin="-234,-7,234,7">
                     <m:Map x:Name="myMap" CredentialsProvider="qtF1tbNC6DSy4noXuV0W~0F6LMMtcj578O71nXGOXAQ~Arm0KZUgxG3dOdteoNW4Eo5L7JZyNaA-P82FcEV3Vc7wMJ-zXDk04HgZaFzAOHQB" 
                             Mode="Aerial"
-                           Margin="-89,-10,-314,-194"
-                           ScaleVisibility="Hidden">
-                    </m:Map>
+                           Margin="-89,-10,-312,-194"
+                           ScaleVisibility="Hidden"
+                           SupportedManipulations="Translate" Cursor="Hand"/>
                 </Grid>
             </Grid>
 
