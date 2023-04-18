@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -15,6 +16,7 @@ namespace Client_for_Traccar
     {
         private static Thread sender_thread;
         private static bool isPaused;
+        private static Pushpin pushpin = null;
 
         public static void pauseStyleSetter(MainWindow mainWindow)
         {
@@ -62,7 +64,8 @@ namespace Client_for_Traccar
 
         public static void Start(MainWindow mainWindow)
         {
-
+            float lati, longi;
+            Location pos;
             if (GeoFinder.variousChecks())
             {
                 sender_thread = new Thread(() =>
@@ -78,6 +81,32 @@ namespace Client_for_Traccar
 
                             Thread.Sleep(Properties.Settings.Default.connectionTimeOut * 1000);
                             Console.WriteLine("Thread being executed...");
+
+                            lati = float.Parse(GeoFinder.getLatitude());
+                            longi = float.Parse(GeoFinder.getLongitude());
+                            pos = new Location(lati, longi);
+
+                            Console.WriteLine("Thread started with coords: " + lati + "; " + longi);
+
+
+                            Application.Current.Dispatcher.Invoke(() =>
+                            {
+                                mainWindow.myMap.SetView(pos, mainWindow.currentZoom);
+
+                                if (pushpin == null)
+                                {
+                                    pushpin = new Pushpin();
+                                    pushpin.SetResourceReference(FrameworkElement.StyleProperty, "CustomPushpinStyle");
+                                    pushpin.Location = pos;
+
+                                    // Aggiunta del pushpin alla mappa
+                                    mainWindow.myMap.Children.Add(pushpin);
+                                }
+                                else
+                                {
+                                    pushpin.Location = pos;
+                                }
+                            });
                         }
                         else
                         {
@@ -87,7 +116,10 @@ namespace Client_for_Traccar
                     }
                 });
                 sender_thread.Start();
-                Console.WriteLine("Thread started ");
+            }
+            else
+            {
+                mainWindow.myMap.SetView(new Location(41.8903875, 12.5019666), 15);
             }
         }
 

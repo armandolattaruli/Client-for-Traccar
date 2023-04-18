@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Forms;
 using ContextMenu = System.Windows.Forms.ContextMenu;
-using System.Net.NetworkInformation;
-using System.Drawing;
 
 namespace Client_for_Traccar
 {
@@ -13,6 +13,9 @@ namespace Client_for_Traccar
     {
         public NotifyIcon _notifyIcon;
         public ContextMenu _contextMenu;
+        public double currentZoom = 16;
+        private System.Windows.Point _startPoint;
+        private Location _startLocation;
 
         public MainWindow()
         {
@@ -20,8 +23,13 @@ namespace Client_for_Traccar
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
+            myMap.SetView(new Location(41.890202, 12.492892), 15);
+            myMap.PreviewMouseLeftButtonDown += MyMap_PreviewMouseLeftButtonDown;
+            myMap.PreviewMouseMove += MyMap_PreviewMouseMove;
+            myMap.PreviewMouseLeftButtonUp += MyMap_PreviewMouseLeftButtonUp;
+
             //passing this window as parameter.
-            //This is done in order to change the GPS data and update time in this window
+            //This is done in order to change the GPS data and update time in this window            
             ThreadForGPS.Start(this);
         }
 
@@ -33,10 +41,9 @@ namespace Client_for_Traccar
             _notifyIcon.DoubleClick += (s, args) => Show();
             _notifyIcon.ShowBalloonTip(2, "Traccar Client for Windows", "Traccar Client is currently running", ToolTipIcon.Info);
 
-
             _notifyIcon.Click += (s, e) =>
             {
-                // Creazione del menu                
+                // Creazione del menu
                 var menu = new System.Windows.Controls.ContextMenu();
                 var showMenuItem = new System.Windows.Controls.MenuItem();
                 var exitMenuItem = new System.Windows.Controls.MenuItem();
@@ -69,22 +76,6 @@ namespace Client_for_Traccar
             _notifyIcon.Icon = icon;
         }
 
-        public void revealPosition(object sender, RoutedEventArgs e)
-        {
-            GeoFinder.findPosition();
-
-            textForLatitude.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF2CB9F5");
-            textForLongitude.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF2CB9F5");
-            dateUpdate.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#FF2CB9F5");
-            textForLatitude.Text = GeoFinder.getLatitude();
-            textForLongitude.Text = GeoFinder.getLongitude();
-            dateUpdate.Text = DateTime.Now.ToString();
-
-            ThreadForGPS.Start(this);
-
-            return;
-        }
-
         private void closeWindowPersonalized(object sender, RoutedEventArgs e)
         {
             Hide();
@@ -105,7 +96,6 @@ namespace Client_for_Traccar
 
         private void newBackgroundTask(object sender, RoutedEventArgs e)
         {
-
             if (ThreadForGPS.doesItExist())
             {
                 if (ThreadForGPS.getIsPaused())
@@ -126,6 +116,32 @@ namespace Client_for_Traccar
         public void playPauseButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e, string value)
         {
             playPauseButton.Background = (System.Windows.Media.Brush)new BrushConverter().ConvertFromString(value); // set the background color to red
+        }
+
+        private void MyMap_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            _startPoint = e.GetPosition(this);
+            _startLocation = myMap.Center;
+        }
+
+        private void MyMap_PreviewMouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (_startLocation != null && e.LeftButton == MouseButtonState.Pressed)
+            {
+                System.Windows.Point currentPoint = e.GetPosition(this);
+                Location currentLocation = myMap.ViewportPointToLocation(currentPoint);
+
+                double latitudeChange = currentLocation.Latitude - _startLocation.Latitude;
+                double longitudeChange = currentLocation.Longitude - _startLocation.Longitude;
+
+                myMap.Center = new Location(myMap.Center.Latitude - latitudeChange, myMap.Center.Longitude - longitudeChange);
+            }
+        }
+
+        private void MyMap_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            _startPoint = new System.Windows.Point();
+            _startLocation = new Location(float.Parse(GeoFinder.getLatitude()), float.Parse(GeoFinder.getLongitude()));
         }
     }
 }
