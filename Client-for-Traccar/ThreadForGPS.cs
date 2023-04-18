@@ -90,7 +90,16 @@ namespace Client_for_Traccar
 
                             Application.Current.Dispatcher.Invoke(() =>
                             {
-                                mainWindow.myMap.SetView(pos, 15);
+                                mainWindow.myMap.ViewChangeEnd += mainWindow.MyMap_ViewChangeEnd;
+
+                                mainWindow.myMap.SetView(pos, mainWindow.currentZoom);
+
+                                Pushpin pushpin = new Pushpin();
+                                pushpin.SetResourceReference(FrameworkElement.StyleProperty, "CustomPushpinStyle");
+                                pushpin.Location = pos;
+
+                                // Aggiunta del pushpin alla mappa
+                                mainWindow.myMap.Children.Add(pushpin);
                             });
                         }
                         else

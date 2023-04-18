@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
@@ -22,7 +23,7 @@ namespace Client_for_Traccar
             //This is done in order to change the GPS data and update time in this window
             ThreadForGPS.Start(this);
 
-            myMap.ZoomLevel = 12; // livello di zoom iniziale
+            myMap.ZoomLevel = 12; // livello di zoom iniziale            
         }
 
         public void createSysTray()
@@ -108,6 +109,13 @@ namespace Client_for_Traccar
         public void playPauseButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e, string value)
         {
             playPauseButton.Background = (System.Windows.Media.Brush)new BrushConverter().ConvertFromString(value); // set the background color to red
+        }
+
+        public double currentZoom;
+
+        public void MyMap_ViewChangeEnd(object sender, MapEventArgs e)
+        {
+            currentZoom = myMap.ZoomLevel;
         }
     }
 }
