@@ -16,6 +16,7 @@ namespace Client_for_Traccar
     {
         private static Thread sender_thread;
         private static bool isPaused;
+        private static Pushpin pushpin = null;
 
         public static void pauseStyleSetter(MainWindow mainWindow)
         {
@@ -92,12 +93,19 @@ namespace Client_for_Traccar
                             {
                                 mainWindow.myMap.SetView(pos, mainWindow.currentZoom);
 
-                                Pushpin pushpin = new Pushpin();
-                                pushpin.SetResourceReference(FrameworkElement.StyleProperty, "CustomPushpinStyle");
-                                pushpin.Location = pos;
+                                if (pushpin == null)
+                                {
+                                    pushpin = new Pushpin();
+                                    pushpin.SetResourceReference(FrameworkElement.StyleProperty, "CustomPushpinStyle");
+                                    pushpin.Location = pos;
 
-                                // Aggiunta del pushpin alla mappa
-                                mainWindow.myMap.Children.Add(pushpin);
+                                    // Aggiunta del pushpin alla mappa
+                                    mainWindow.myMap.Children.Add(pushpin);
+                                }
+                                else
+                                {
+                                    pushpin.Location = pos;
+                                }
                             });
                         }
                         else

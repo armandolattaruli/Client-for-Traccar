@@ -23,15 +23,14 @@ namespace Client_for_Traccar
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            //passing this window as parameter.
-            //This is done in order to change the GPS data and update time in this window
-            ThreadForGPS.Start(this);
-
             myMap.SetView(new Location(41.890202, 12.492892), 15);
-            myMap.ZoomLevel = 15; // initial zoom level        
             myMap.PreviewMouseLeftButtonDown += MyMap_PreviewMouseLeftButtonDown;
             myMap.PreviewMouseMove += MyMap_PreviewMouseMove;
             myMap.PreviewMouseLeftButtonUp += MyMap_PreviewMouseLeftButtonUp;
+
+            //passing this window as parameter.
+            //This is done in order to change the GPS data and update time in this window            
+            ThreadForGPS.Start(this);
         }
 
         public void createSysTray()
