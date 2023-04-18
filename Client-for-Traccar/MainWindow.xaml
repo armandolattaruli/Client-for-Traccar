@@ -19,10 +19,10 @@
                 <RowDefinition Height="75"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <TextBlock x:Name="infoVersion" Margin="166,447,0,-384" HorizontalAlignment="Left"
+            <TextBlock x:Name="infoVersion" Margin="0,476,0,-413" HorizontalAlignment="Center"
                        Foreground="#FF717171"
                        FontFamily="Cascadia Code" TextAlignment="Center" Width="264"
-                       FontSize="10" Grid.ColumnSpan="3">
+                       FontSize="10" Grid.Column="1">
                 v. 0.0.0
             </TextBlock>
 
@@ -213,7 +213,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Image Source="assets/settings.png" Margin="11,447,165,-396" />
+            <Image Source="assets/settings.png" Margin="10,464,166,-413" />
         </Grid>
     </Border>
 </Window>
