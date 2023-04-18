@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"        
         mc:Ignorable="d"
         Title="Traccar Client" Height="400" Width="600"
         AllowsTransparency="True"
@@ -26,6 +27,15 @@
                        FontSize="10" Grid.ColumnSpan="3">
                 v. 0.0.0
             </TextBlock>
+
+            <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="120,87,80,-87">
+                <Grid Margin="-234,-7,234,7">
+                    <m:Map x:Name="myMap" CredentialsProvider="qtF1tbNC6DSy4noXuV0W~0F6LMMtcj578O71nXGOXAQ~Arm0KZUgxG3dOdteoNW4Eo5L7JZyNaA-P82FcEV3Vc7wMJ-zXDk04HgZaFzAOHQB" 
+                            Mode="Road"
+                           Margin="-88,-19,-315,-123">
+                    </m:Map>
+                </Grid>
+            </Grid>
 
             <Image x:Name="appIcon" Source="/assets/icon.png" Margin="7,10,141,19" />
 
@@ -76,26 +86,26 @@
                 <Image Source="/assets/location-sign.png" Height="40" Width="40" />
             </Button>-->
 
-            <Label x:Name="labelLat" Content="LATITUDE:" Margin="123,253,0,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" />
+            <Label x:Name="labelLat" Content="LATITUDE:" Margin="110,286,13,-237" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" />
             <TextBlock x:Name="textForLatitude"
                        Text="N/D"
                        Foreground="#FFF56C2C"
                        FontSize="17"
                        Grid.ColumnSpan="2"
-                       Margin="38,284,133,-237"
+                       Margin="34,317,137,-270"
                        TextAlignment="Center">
                 <TextBlock.Effect>
                     <DropShadowEffect />
                 </TextBlock.Effect>
             </TextBlock>
 
-            <Label x:Name="labelLong" Content="LONGITUDE:" Margin="0,253,123,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" Grid.Column="2" />
+            <Label x:Name="labelLong" Content="LONGITUDE:" Margin="196,286,127,-237" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" Grid.Column="1" Grid.ColumnSpan="2" />
             <TextBlock x:Name="textForLongitude"
                        Text="N/D"
                        Foreground="#FFF56C2C"
                        FontSize="17"
                        Grid.ColumnSpan="2"
-                       Margin="124,284,47,-237"
+                       Margin="120,317,51,-270"
                        TextAlignment="Center"
                        Grid.Column="1">
                 <TextBlock.Effect>
@@ -103,12 +113,12 @@
                 </TextBlock.Effect>
             </TextBlock>
 
-            <Label x:Name="labelUpdate" Content="LATEST UPDATE:" Margin="46,253,46,-204" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" Grid.Column="1" />
+            <Label x:Name="labelUpdate" Content="LATEST UPDATE:" Margin="42,286,50,-237" Foreground="#FFF7F7F7" FontFamily="Cascadia Code" Grid.Column="1" />
             <TextBlock x:Name="dateUpdate"
                        Text="N/D"
                        Foreground="#FFF56C2C"
                        FontSize="17"
-                       Margin="41,284,41,-269"
+                       Margin="37,317,45,-302"
                        TextAlignment="Center"
                        Grid.Column="1"
                        TextWrapping="Wrap">

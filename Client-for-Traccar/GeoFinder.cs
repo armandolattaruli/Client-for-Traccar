@@ -14,7 +14,7 @@ namespace Client_for_Traccar
     {
         //userName,
         private static string userName, time, velocity, bearing, alti, precision, batt;
-        private static string latitude, longitude;
+        private static string latitude = "", longitude = "";
 
         //finds the position by using the GPS
         public static Boolean variousChecks()
@@ -77,7 +77,7 @@ namespace Client_for_Traccar
             return Properties.Settings.Default.serverLink;
         }
 
-        //composes the string and send it to the server
+        //composes the string and sends it to the server
         public static void magicClient(MainWindow mainWindow2)
         {
             if (variousChecks())

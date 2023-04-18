@@ -193,6 +193,12 @@
     <Resource Include="assets\icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Maps.MapControl.WPF">
+      <Version>1.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls">
+      <Version>6.1.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
       <Version>10.0.22621.755</Version>
     </PackageReference>
