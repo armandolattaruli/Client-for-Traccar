@@ -22,6 +22,26 @@ namespace Client_for_Traccar
         public Window1()
         {
             InitializeComponent();
+
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window != this)
+                {
+                    window.IsEnabled = false;
+                }
+            }
         }
+
+        private void MyWindow_Closed(object sender, EventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window != this)
+                {
+                    window.IsEnabled = true;
+                }
+            }
+        }
+
     }
 }
