@@ -5,15 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client_for_Traccar"
         mc:Ignorable="d"
-        Title="Traccar Client" Height="565" Width="600"
+        Title="Traccar Client" Height="574" Width="633"
         AllowsTransparency="True"
         WindowStyle="None" ResizeMode="NoResize" 
         Background="{x:Null}" MouseDown="Window_MouseDown" 
         FontFamily="Cascadia Code"
         >
 
-    <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919">
-        <Grid HorizontalAlignment="Left" Width="600" Height="598" VerticalAlignment="Top">
+    <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919" HorizontalAlignment="Center" Width="600" Height="565" VerticalAlignment="Top">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.7"/>
+        </Border.Effect>
+        <Grid HorizontalAlignment="Left" Width="600" Margin="0,0,0,-35">
             <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,525" CornerRadius="20"/>
 
             <!-- CLOSING BUTTON -->
