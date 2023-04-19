@@ -6,11 +6,14 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"                
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="Traccar Client" Height="512" Width="600"
+        Title="Traccar Client" Height="522" Width="615"
         AllowsTransparency="True"
         WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" MouseDown="Window_MouseDown">
-    <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919" Height="512" VerticalAlignment="Top">
-        <Grid Margin="0,11,0,0" Height="498" VerticalAlignment="Top">
+    <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919" Height="512" VerticalAlignment="Top" HorizontalAlignment="Left" Width="599">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.7"/>
+        </Border.Effect>
+        <Grid Margin="0,11,0,0" Height="509" VerticalAlignment="Top" HorizontalAlignment="Left" Width="598">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition Width="200"></ColumnDefinition>
