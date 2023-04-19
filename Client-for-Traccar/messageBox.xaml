@@ -7,8 +7,14 @@
         mc:Ignorable="d"
         WindowStyle="None"        
         AllowsTransparency="True"
-        Title="Window1" Height="450" Width="800" Background="Transparent">
-    <Border CornerRadius="20" Background="#ff292929"
-            BorderThickness="1" BorderBrush="#ff191919"
-             VerticalAlignment="Center" Height="450"/>
+        Title="Window1" 
+        Height="322" 
+        Width="800" 
+        Background="Transparent">
+    <Border CornerRadius="20" Background="#ff292929">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+        </Border.Effect>
+
+    </Border>
 </Window>
