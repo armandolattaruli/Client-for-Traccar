@@ -17,9 +17,9 @@ namespace Client_for_Traccar
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class personalMessageBox : Window
     {
-        public Window1()
+        public personalMessageBox()
         {
             InitializeComponent();
 
