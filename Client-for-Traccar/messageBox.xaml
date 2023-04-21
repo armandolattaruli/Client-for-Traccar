@@ -42,15 +42,15 @@
                 Click="MyWindow_Closed" Cursor="Hand" />
 
             <TextBlock x:Name="personalMessage" 
-                       HorizontalAlignment="Left" 
-                       Margin="142,25,0,0" TextWrapping="Wrap" 
-                       Text="TextBlock" 
-                       VerticalAlignment="Top"
-                       Width="283"
+                       Margin="156,18,10,70" TextWrapping="Wrap" 
+                       Text="TextBlock"
                        Foreground="White"
-                       FontSize="15" Height="68" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                       FontSize="15" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
 
-            <Image x:Name="imageLink" Source="{Binding}" Margin="25,25,92,77" Grid.RowSpan="2" />
+            <Image x:Name="imageLink" 
+                   Source="/assets/cross.png" 
+                   Margin="5,18,88,70" 
+                   Grid.RowSpan="2"/>
 
         </Grid>
     </Border>
