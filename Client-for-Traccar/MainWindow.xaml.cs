@@ -29,9 +29,9 @@ namespace Client_for_Traccar
             myMap.PreviewMouseLeftButtonUp += MyMap_PreviewMouseLeftButtonUp;
 
             //passing this window as parameter.
-            //This is done in order to change the GPS data and update time in this window
-            pippo();
+            //This is done in order to change the GPS data and update time in this window            
             ThreadForGPS.Start(this);
+            pippo();
         }
 
         public void createSysTray()
