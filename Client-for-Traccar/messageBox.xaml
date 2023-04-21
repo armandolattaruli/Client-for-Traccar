@@ -8,15 +8,15 @@
         WindowStyle="None"        
         AllowsTransparency="True"
         Title="Window1" 
-        Height="317" 
-        Width="677" 
+        Height="205" 
+        Width="467" 
         Background="Transparent">
-    <Border CornerRadius="20" Background="#ff292929" Margin="140,115,0,0">
+    <Border CornerRadius="20" Background="#ff292929" Margin="0,0,18,15">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
         </Border.Effect>
 
-        <Grid>
+        <Grid HorizontalAlignment="Center" Width="449" Height="170" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -30,7 +30,7 @@
                 Style="{StaticResource GeneralPurposeButton}"
                 Background="{DynamicResource SecondaryGreen}"
                 Foreground="White"
-                Content="OK" Margin="76,37,75,10"
+                Content="OK" Margin="68,37,67,10"
                 Grid.Column="1" Grid.Row="1"
                 Click="MyWindow_Closed"/>
 
@@ -38,7 +38,7 @@
                 Style="{StaticResource GeneralPurposeButton}"
                 Background="DarkRed"
                 Foreground="White"
-                Content="Cancel" Margin="76,37,76,10" Grid.Row="1"
+                Content="Cancel" Margin="68,37,68,10" Grid.Row="1"
                 Click="MyWindow_Closed"/>
         </Grid>
     </Border>

@@ -29,7 +29,8 @@ namespace Client_for_Traccar
             myMap.PreviewMouseLeftButtonUp += MyMap_PreviewMouseLeftButtonUp;
 
             //passing this window as parameter.
-            //This is done in order to change the GPS data and update time in this window            
+            //This is done in order to change the GPS data and update time in this window
+            pippo();
             ThreadForGPS.Start(this);
         }
 
@@ -142,6 +143,14 @@ namespace Client_for_Traccar
         {
             _startPoint = new System.Windows.Point();
             _startLocation = new Location(float.Parse(GeoFinder.getLatitude()), float.Parse(GeoFinder.getLongitude()));
+        }
+
+        public static void pippo()
+        {
+            Client_for_Traccar.personalMessageBox personalMessageBox = new personalMessageBox();
+
+            personalMessageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            personalMessageBox.Show();
         }
     }
 }

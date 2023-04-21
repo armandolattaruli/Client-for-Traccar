@@ -106,10 +106,7 @@ namespace Client_for_Traccar
                 catch (Exception ex)
                 {
                     // Codice che gestisce l'eccezione
-                    Client_for_Traccar.personalMessageBox personalMessageBox = new personalMessageBox();
-
-                    personalMessageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                    personalMessageBox.Show();
+                    //MainWindow.pippo();
 
                     System.Windows.MessageBox.Show("Something went wrong: make sure to use a correct name for device!");
                     ThreadForGPS.pauseStyleSetter(mainWindow2);
