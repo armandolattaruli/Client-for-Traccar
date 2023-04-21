@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Client_for_Traccar
 {
@@ -10,6 +11,7 @@ namespace Client_for_Traccar
     {
         public personalMessageBox()
         {
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
 
             foreach (Window window in (Application.Current.Windows))
@@ -33,6 +35,12 @@ namespace Client_for_Traccar
                 }
             }
             Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
         }
     }
 }

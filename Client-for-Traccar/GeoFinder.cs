@@ -109,9 +109,9 @@ namespace Client_for_Traccar
                     Application.Current.Dispatcher.Invoke((Action)delegate
                     {
                         personalMessageBox personalMessageBox = new personalMessageBox();
-                        personalMessageBox.personalMessage.Text = "Something went wrong! Plese: \n Check your device name" +
-                        "\nCheck your internet connection" +
-                        "\nCheck GPS permission";
+                        personalMessageBox.personalMessage.Text = "Something went wrong! Plaese:\n- Check your device name" +
+                        "\n- Check your internet connection" +
+                        "\n- Check GPS permission";
                         personalMessageBox.Show();
                     });
                     ThreadForGPS.killThread();

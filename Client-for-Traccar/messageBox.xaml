@@ -10,7 +10,8 @@
         Title="Window1"
         Height="205"
         Width="467"
-        Background="Transparent">
+        Background="Transparent"
+        MouseDown="Window_MouseDown">
     <Border CornerRadius="20" Background="#ff292929" Margin="0,0,18,15">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" ShadowDepth="10" />
