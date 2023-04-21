@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace Client_for_Traccar
 {
@@ -141,7 +142,11 @@ namespace Client_for_Traccar
                 // Save value in user settings
                 Properties.Settings.Default.defaultDeviceName = selectedValue;
                 Properties.Settings.Default.Save();
-                MessageBox.Show("New value for defaultDeviceName is: " + Properties.Settings.Default.defaultDeviceName);
+
+                personalMessageBox personalMessageBox = new personalMessageBox();
+                personalMessageBox.personalMessage.Text = "This device will be localized: " + Properties.Settings.Default.defaultDeviceName;
+                personalMessageBox.imageLink.Source = new BitmapImage(new Uri("assets/info.png", UriKind.Relative));
+                personalMessageBox.Show();
             }
         }
 

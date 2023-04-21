@@ -257,5 +257,11 @@
   <ItemGroup>
     <None Include="assets\it_flag_icon_251630.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\info.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

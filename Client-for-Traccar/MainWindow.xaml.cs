@@ -30,7 +30,6 @@ namespace Client_for_Traccar
             //passing this window as parameter.
             //This is done in order to change the GPS data and update time in this window
             ThreadForGPS.Start(this);
-            pippo();
         }
 
         public void createSysTray()
@@ -142,14 +141,6 @@ namespace Client_for_Traccar
         {
             _startPoint = new System.Windows.Point();
             _startLocation = new Location(float.Parse(GeoFinder.getLatitude()), float.Parse(GeoFinder.getLongitude()));
-        }
-
-        public static void pippo()
-        {
-            Client_for_Traccar.personalMessageBox personalMessageBox = new personalMessageBox();
-
-            personalMessageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            personalMessageBox.Show();
         }
     }
 }

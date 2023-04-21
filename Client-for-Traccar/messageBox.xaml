@@ -32,14 +32,26 @@
                 Foreground="White"
                 Content="OK" Margin="68,37,67,10"
                 Grid.Column="1" Grid.Row="1"
-                Click="MyWindow_Closed" />
+                Click="MyWindow_Closed" Cursor="Hand" />
 
             <Button
                 Style="{StaticResource GeneralPurposeButton}"
                 Background="DarkRed"
                 Foreground="White"
                 Content="Cancel" Margin="68,37,68,10" Grid.Row="1"
-                Click="MyWindow_Closed" />
+                Click="MyWindow_Closed" Cursor="Hand" />
+
+            <TextBlock x:Name="personalMessage" 
+                       HorizontalAlignment="Left" 
+                       Margin="142,25,0,0" TextWrapping="Wrap" 
+                       Text="TextBlock" 
+                       VerticalAlignment="Top"
+                       Width="283"
+                       Foreground="White"
+                       FontSize="15" Height="68" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+
+            <Image x:Name="imageLink" Source="{Binding}" Margin="25,25,92,77" Grid.RowSpan="2" />
+
         </Grid>
     </Border>
 </Window>

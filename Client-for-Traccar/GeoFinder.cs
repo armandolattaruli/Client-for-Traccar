@@ -3,6 +3,7 @@ using System.Device.Location;
 using System.Management;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Windows;
 
 namespace Client_for_Traccar
 {
@@ -102,8 +103,17 @@ namespace Client_for_Traccar
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.MessageBox.Show("Something went wrong: make sure to use a correct name for device!");
-                    ThreadForGPS.pauseStyleSetter(mainWindow2);
+                    //System.Windows.MessageBox.Show("Something went wrong: make sure to use a correct name for device!");
+                    //ThreadForGPS.pauseStyleSetter(mainWindow2);                                     
+
+                    Application.Current.Dispatcher.Invoke((Action)delegate
+                    {
+                        personalMessageBox personalMessageBox = new personalMessageBox();
+                        personalMessageBox.personalMessage.Text = "Something went wrong! Plese: \n Check your device name" +
+                        "\nCheck your internet connection" +
+                        "\nCheck GPS permission";
+                        personalMessageBox.Show();
+                    });
                     ThreadForGPS.killThread();
 
                     String s = ex.Message;
