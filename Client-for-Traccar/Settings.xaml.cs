@@ -1,10 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Specialized;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Linq;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System;
 
 namespace Client_for_Traccar
 {
@@ -74,7 +72,6 @@ namespace Client_for_Traccar
             newRadioButton.Style = (Style)Application.Current.FindResource("radioButtonDevice");
             newRadioButton.Content = newItem;
             newRadioButton.GroupName = "devicesRadios";
-
 
             if (!string.IsNullOrWhiteSpace(newItem))
             {

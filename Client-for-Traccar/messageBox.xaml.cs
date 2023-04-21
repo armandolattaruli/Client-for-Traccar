@@ -14,10 +14,10 @@ namespace Client_for_Traccar
 
             foreach (Window window in (Application.Current.Windows))
             {
-                if (window != this && this.IsEnabled)
+                if (window != this)
                 {
                     window.IsEnabled = false;
-                    Console.WriteLine("closing...");
+                    Console.WriteLine("Disabling " + window.Name);
                 }
             }
         }
@@ -26,11 +26,11 @@ namespace Client_for_Traccar
         {
             foreach (Window window in Application.Current.Windows)
             {
-                if (window != this && window.IsEnabled)
+                if (window != this)
                 {
                     window.IsEnabled = true;
+                    Console.WriteLine("Enabling " + window.Name);
                 }
-                Console.WriteLine("opening...");
             }
             Close();
         }

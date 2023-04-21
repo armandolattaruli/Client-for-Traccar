@@ -1,12 +1,6 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -87,7 +81,6 @@ namespace Client_for_Traccar
                             pos = new Location(lati, longi);
 
                             Console.WriteLine("Thread started with coords: " + lati + "; " + longi);
-
 
                             Application.Current.Dispatcher.Invoke(() =>
                             {

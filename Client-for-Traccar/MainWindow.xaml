@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"                
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="Traccar Client" Height="522" Width="615"
@@ -11,7 +11,7 @@
         WindowStyle="None" ResizeMode="NoResize" Background="{x:Null}" MouseDown="Window_MouseDown">
     <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919" Height="512" VerticalAlignment="Top" HorizontalAlignment="Left" Width="599">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.7"/>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.7" />
         </Border.Effect>
         <Grid Margin="0,11,0,0" Height="509" VerticalAlignment="Top" HorizontalAlignment="Left" Width="598">
             <Grid.ColumnDefinitions>
@@ -32,11 +32,11 @@
 
             <Grid Grid.Column="1" Grid.ColumnSpan="2" Margin="120,87,80,-87">
                 <Grid Margin="-234,-7,234,7">
-                    <m:Map x:Name="myMap" CredentialsProvider="qtF1tbNC6DSy4noXuV0W~0F6LMMtcj578O71nXGOXAQ~Arm0KZUgxG3dOdteoNW4Eo5L7JZyNaA-P82FcEV3Vc7wMJ-zXDk04HgZaFzAOHQB" 
+                    <m:Map x:Name="myMap" CredentialsProvider="qtF1tbNC6DSy4noXuV0W~0F6LMMtcj578O71nXGOXAQ~Arm0KZUgxG3dOdteoNW4Eo5L7JZyNaA-P82FcEV3Vc7wMJ-zXDk04HgZaFzAOHQB"
                             Mode="Aerial"
                            Margin="-89,-10,-312,-194"
                            ScaleVisibility="Hidden"
-                           SupportedManipulations="Translate" Cursor="Hand"/>
+                           SupportedManipulations="Translate" Cursor="Hand" />
                 </Grid>
             </Grid>
 
@@ -47,7 +47,6 @@
                     FontSize="21"
                     Foreground="#dddddd" Margin="66,17,41,26"
                     Grid.ColumnSpan="2">
-
             </TextBlock>
 
             <Label x:Name="threadSuspended"

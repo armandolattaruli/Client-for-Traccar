@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client_for_Traccar"
         mc:Ignorable="d"
-        WindowStyle="None"        
+        WindowStyle="None"
         AllowsTransparency="True"
-        Title="Window1" 
-        Height="205" 
-        Width="467" 
+        Title="Window1"
+        Height="205"
+        Width="467"
         Background="Transparent">
     <Border CornerRadius="20" Background="#ff292929" Margin="0,0,18,15">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="10" ShadowDepth="10"/>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="10" />
         </Border.Effect>
 
         <Grid HorizontalAlignment="Center" Width="449" Height="170" VerticalAlignment="Center">
@@ -32,14 +32,14 @@
                 Foreground="White"
                 Content="OK" Margin="68,37,67,10"
                 Grid.Column="1" Grid.Row="1"
-                Click="MyWindow_Closed"/>
+                Click="MyWindow_Closed" />
 
             <Button
                 Style="{StaticResource GeneralPurposeButton}"
                 Background="DarkRed"
                 Foreground="White"
                 Content="Cancel" Margin="68,37,68,10" Grid.Row="1"
-                Click="MyWindow_Closed"/>
+                Click="MyWindow_Closed" />
         </Grid>
     </Border>
 </Window>

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Net;
 using System.Device.Location;
 using System.Management;
-using System.IO;
-using System.Windows.Forms;
-using System.Windows;
+using System.Net;
 using System.Net.NetworkInformation;
-using System.Windows.Media;
 
 namespace Client_for_Traccar
 {
@@ -14,6 +10,7 @@ namespace Client_for_Traccar
     {
         //userName,
         private static string userName, time, velocity, bearing, alti, precision, batt;
+
         private static string latitude = "", longitude = "";
 
         //finds the position by using the GPS
@@ -97,7 +94,7 @@ namespace Client_for_Traccar
                     + velocity + "&bearing=" + bearing + "&altitude=" + alti + "&accuracy=2000.0";
                 string URI = readLink() + entireString;
 
-                //System.Windows.MessageBox.Show(URI);            
+                //System.Windows.MessageBox.Show(URI);
 
                 try
                 {
@@ -105,9 +102,6 @@ namespace Client_for_Traccar
                 }
                 catch (Exception ex)
                 {
-                    // Codice che gestisce l'eccezione
-                    //MainWindow.pippo();
-
                     System.Windows.MessageBox.Show("Something went wrong: make sure to use a correct name for device!");
                     ThreadForGPS.pauseStyleSetter(mainWindow2);
                     ThreadForGPS.killThread();

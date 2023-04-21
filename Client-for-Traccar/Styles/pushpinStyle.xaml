@@ -10,12 +10,11 @@
             <Setter.Value>
                 <ControlTemplate TargetType="m:Pushpin">
                     <Grid>
-                        <Ellipse Fill="{TemplateBinding Background}" Width="30" Height="auto" HorizontalAlignment="Stretch"/>
+                        <Ellipse Fill="{TemplateBinding Background}" Width="30" Height="auto" HorizontalAlignment="Stretch" />
                         <Ellipse Fill="White" Width="20" Height="auto" Margin="5" HorizontalAlignment="Stretch" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
 </ResourceDictionary>

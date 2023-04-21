@@ -7,119 +7,117 @@
         mc:Ignorable="d"
         Title="Traccar Client" Height="574" Width="633"
         AllowsTransparency="True"
-        WindowStyle="None" ResizeMode="NoResize" 
-        Background="{x:Null}" MouseDown="Window_MouseDown" 
-        FontFamily="Cascadia Code"
-        >
+        WindowStyle="None" ResizeMode="NoResize"
+        Background="{x:Null}" MouseDown="Window_MouseDown"
+        FontFamily="Cascadia Code">
 
     <Border CornerRadius="20" Background="#ff292929" BorderThickness="1" BorderBrush="#ff191919" HorizontalAlignment="Center" Width="600" Height="565" VerticalAlignment="Top">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.7"/>
+            <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.7" />
         </Border.Effect>
         <Grid HorizontalAlignment="Left" Width="600" Margin="0,0,0,-35">
-            <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,525" CornerRadius="20"/>
+            <Border BorderBrush="Black" BorderThickness="0" Background="{StaticResource DarkGray}" Margin="0,0,3,525" CornerRadius="20" />
 
             <!-- CLOSING BUTTON -->
-            <Button x:Name="CloseButtonSettings" 
+            <Button x:Name="CloseButtonSettings"
                     Click="MaincloseWindowPersonalized"
                     Style="{StaticResource CloseButton}"
-                    Margin="550,16,10,542" 
-                    Width="40" 
-                    Height="40" 
-                    Cursor="Hand" 
+                    Margin="550,16,10,542"
+                    Width="40"
+                    Height="40"
+                    Cursor="Hand"
                     ToolTip="Close">
                 <Image Source="/Styles/close.png" Width="20" Height="20"
-                       VerticalAlignment="Center"/>
+                       VerticalAlignment="Center" />
             </Button>
 
-            <Label x:Name="windowTitle" 
-                   Content="Settings" 
-                   Foreground="#dddddd" 
-                   FontSize="20" 
-                   FontWeight="Bold" 
-                   FontFamily="Cascadia Code" 
+            <Label x:Name="windowTitle"
+                   Content="Settings"
+                   Foreground="#dddddd"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   FontFamily="Cascadia Code"
                    Margin="0,0,450,538"
                    VerticalContentAlignment="Center"
-                   HorizontalContentAlignment="Center" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="140"/>
+                   HorizontalContentAlignment="Center" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="140" />
 
-            <Label x:Name="labelServerAddress" 
-                   Content="Server address" 
-                   Foreground="#dddddd" 
-                   FontSize="17" 
+            <Label x:Name="labelServerAddress"
+                   Content="Server address"
+                   Foreground="#dddddd"
+                   FontSize="17"
                    Margin="37,84,361,479"
                    FontFamily="Cascadia Code"
                    HorizontalContentAlignment="Left"
-                   VerticalContentAlignment="Center"/>
+                   VerticalContentAlignment="Center" />
 
-            <TextBox x:Name="serverAddressName" 
+            <TextBox x:Name="serverAddressName"
                      Margin="37,119,136,439"
                      Text="youripAddress:andPortNumber"
-                     Style="{StaticResource NormalTextBox}"/>
+                     Style="{StaticResource NormalTextBox}" />
 
             <Button x:Name="saveServerAddress"
-                    Margin="469,119,31,439"                     
+                    Margin="469,119,31,439"
                     Click="saveServerAddress_Click" Cursor="Hand">
 
-                <Image Source="/assets/diskette.png" 
-                       Width="25" 
-                       Height="25"/>
+                <Image Source="/assets/diskette.png"
+                       Width="25"
+                       Height="25" />
 
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource CloseButton}">
-                        <Setter Property="Background" Value="{DynamicResource SecondaryGreen}"/>
+                        <Setter Property="Background" Value="{DynamicResource SecondaryGreen}" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{DynamicResource PrimaryGreen}"/>
+                                <Setter Property="Background" Value="{DynamicResource PrimaryGreen}" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
             </Button>
 
-            <Label x:Name="labelConnectionTimeOut" 
-                Content="Update rate" 
-                Foreground="#dddddd" 
-                FontSize="17" 
+            <Label x:Name="labelConnectionTimeOut"
+                Content="Update rate"
+                Foreground="#dddddd"
+                FontSize="17"
                 Margin="34,164,364,396"
                 FontFamily="Cascadia Code"
                 HorizontalContentAlignment="Left"
-                VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
+                VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates" />
 
-            <TextBox x:Name="connectionTimeOut" 
+            <TextBox x:Name="connectionTimeOut"
                 Margin="34,202,139,354"
                 Text="Specify the number of seconds"
-                Style="{StaticResource NormalTextBox}"/>
+                Style="{StaticResource NormalTextBox}" />
 
             <Button x:Name="saveConnectionTimeOut"
-                Margin="469,202,31,354"                     
+                Margin="469,202,31,354"
                 Click="saveConnectionTimeOut_click" Cursor="Hand">
 
                 <Button.Style>
                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
-                        <Setter Property="Background" Value="{DynamicResource SecondaryGreen}"/>
+                        <Setter Property="Background" Value="{DynamicResource SecondaryGreen}" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{DynamicResource PrimaryGreen}"/>
+                                <Setter Property="Background" Value="{DynamicResource PrimaryGreen}" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
 
-                <Image Source="/assets/diskette.png" 
-                    Width="25" 
-                    Height="25"/>
-
+                <Image Source="/assets/diskette.png"
+                    Width="25"
+                    Height="25" />
             </Button>
 
             <!-- DEVICE LIST LABEL-->
-            <Label x:Name="DeviceSelectionLabel" 
-                Content="Select device (or add a new one)" 
-                Foreground="#dddddd" 
-                FontSize="17" 
+            <Label x:Name="DeviceSelectionLabel"
+                Content="Select device (or add a new one)"
+                Foreground="#dddddd"
+                FontSize="17"
                 Margin="34,269,231,299"
                 FontFamily="Cascadia Code"
                 HorizontalContentAlignment="Left"
-                VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates"/>
+                VerticalContentAlignment="Center" ToolTip="Set the amount of time between updates" />
 
             <!-- DEVICE LIST -->
             <ComboBox x:Name="devicesMenu"
@@ -127,55 +125,52 @@
                   Style="{StaticResource generalMenu}" Margin="34,304,34,145">
 
                 <!--<ComboBoxItem Style="{StaticResource generalMenuItem}">
-                    <RadioButton Content="pippo" GroupName="devicesList" Style="{StaticResource radioButtonDevice}"/>
+                    <RadioButton Content="pippo" GroupName="devicesList" Style="{StaticResource radioButtonDevice}" />
                 </ComboBoxItem>-->
-
             </ComboBox>
 
-            <TextBox x:Name="addDeviceName_textBox" 
+            <TextBox x:Name="addDeviceName_textBox"
                 Margin="34,467,254,89"
-                Style="{StaticResource NormalTextBox}"/>
+                Style="{StaticResource NormalTextBox}" />
 
             <!-- ADD ITEM BUTTON -->
             <Button x:Name="addDeviceButton"
-                Margin="351,467,149,0"                     
+                Margin="351,467,149,0"
                 Click="addDeviceButton_click" Cursor="Hand" Height="42" VerticalAlignment="Top">
 
                 <Button.Style>
                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
-                        <Setter Property="Background" Value="{DynamicResource SecondaryBlue}"/>
+                        <Setter Property="Background" Value="{DynamicResource SecondaryBlue}" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{DynamicResource PrimaryBlue}"/>
+                                <Setter Property="Background" Value="{DynamicResource PrimaryBlue}" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
 
-                <Image Source="/assets/plus.png" 
-                    Width="25" 
-                    Height="25"/>
-
+                <Image Source="/assets/plus.png"
+                    Width="25"
+                    Height="25" />
             </Button>
             <Button x:Name="saveConnectionTimeOut_Copy"
-                Margin="456,467,44,89"                     
+                Margin="456,467,44,89"
                 Click="deleteDevices" Cursor="Hand" ToolTip="Delete all devices. WARNING: this will stop the service!">
 
                 <Button.Style>
                     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CloseButton}">
-                        <Setter Property="Background" Value="DarkRed"/>
+                        <Setter Property="Background" Value="DarkRed" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#aa0000"/>
+                                <Setter Property="Background" Value="#aa0000" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
 
-                <Image Source="/assets/trash-can.png" 
-                    Width="25" 
-                    Height="25"/>
-
+                <Image Source="/assets/trash-can.png"
+                    Width="25"
+                    Height="25" />
             </Button>
         </Grid>
     </Border>

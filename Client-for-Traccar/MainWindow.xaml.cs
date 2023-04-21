@@ -1,5 +1,4 @@
 ﻿using Microsoft.Maps.MapControl.WPF;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Forms;
@@ -29,7 +28,7 @@ namespace Client_for_Traccar
             myMap.PreviewMouseLeftButtonUp += MyMap_PreviewMouseLeftButtonUp;
 
             //passing this window as parameter.
-            //This is done in order to change the GPS data and update time in this window            
+            //This is done in order to change the GPS data and update time in this window
             ThreadForGPS.Start(this);
             pippo();
         }

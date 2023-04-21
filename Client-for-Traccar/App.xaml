@@ -1,15 +1,14 @@
 ﻿<Application x:Class="Client_for_Traccar.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Client_for_Traccar"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/MainStyle.xaml"/>
-                <ResourceDictionary Source="/Styles/MenuStyle.xaml"/>
-                <ResourceDictionary Source="/Styles/generalMenuStyle.xaml"/>
-                <ResourceDictionary Source="/Styles/pushpinStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/MainStyle.xaml" />
+                <ResourceDictionary Source="/Styles/MenuStyle.xaml" />
+                <ResourceDictionary Source="/Styles/generalMenuStyle.xaml" />
+                <ResourceDictionary Source="/Styles/pushpinStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
